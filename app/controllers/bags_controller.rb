@@ -3,7 +3,7 @@ class BagsController < ApplicationController
     @bag = Bag.new
     @outbound = Outbound.find(params[:outbound_id])
     @bag_count = Bag.where(outbound_id: @outbound)
-    @bags = Bag.where(outbound_id: @outbound).last
+    @bags = Bag.where(outbound_id: @outbound)
   end
 
   def create
