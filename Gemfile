@@ -14,6 +14,7 @@ gem 'pg', '~> 0.18.4'
 gem 'bootstrap-sass', '~> 3.4.1'
 gem 'sassc-rails', '>= 2.1.0'
 gem 'jquery-rails'
+gem 'rails_admin', '~> 2.0'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

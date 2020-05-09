@@ -1,0 +1,22 @@
+<h1 class="text-center">จัดการ ป.58</h1>
+<%= link_to 'กลับสู่หน้าหลัก' , root_path , class: 'btn btn-danger' %>
+<%= link_to 'สร้าง ป.58' , new_outbound_path , class: 'btn btn-primary' %>
+<div class="col-lg-12">
+  <% @outbounds.each do |outbound| %>
+  <div class="col-lg-3">
+    <div class="jumbotron">
+      <div class="container">
+        <strong>เลขที่เอกสาร : </strong><%= outbound.outbound_number %><br>
+        <strong>ปลายทาง : </strong><%= outbound.destination %> <br>
+        <strong>ทะเบียนรถ : </strong><%= outbound.car %> <br>
+        <strong>หมายเลขสายรัด : </strong><%= outbound.strap %> <br>
+        <strong>วันที่ส่งมอบ : </strong><%= outbound.sent_date.strftime("%d-%b-%C") %> <br>
+        <strong>จำนวนสิ่งของ : </strong> <br>
+        <button type="button" class="btn btn-success">สแกนถุง</button>
+        <%= link_to 'รายละเอียดเพิ่มเติม' , outbound_path(outbound.id) , class:'btn btn-primary' %>
+        <button type="button" class="btn btn-success">พิมพ์บัญชี ป.58</button>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
