@@ -1,0 +1,35 @@
+<%= form_for @outbound do |form| %>
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="form-group">
+        <%= form.label :เลขที่เอกสาร , class: 'label-control' %>
+        <%= form.text_field :outbound_number , class: ' form-control' , value: Time.now.strftime('%d%m%y')+rand(00000..99999).to_s %>
+      </div>
+      <div class="form-group">
+        <%= form.label :ต้นทาง , class: 'label-control'%>
+        <%= form.text_field :origin , class:'form-control' , value: '60010' , required: true %>
+      </div>
+      <div class="form-group">
+        <%= form.label :ปลายทาง , class: 'label-control'%>
+        <%= form.text_field :destination , class: 'form-control' , required: true  %>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="form-group">
+        <%= form.label :เลขที่สายรัด , class: 'label-control' %>
+        <%= form.text_field :strap , class:'form-control' , required: true %>
+      </div>
+      <div class="form-group">
+        <%= form.label :ทะเบียนรถ , class: 'label-control' %>
+        <%= form.text_field :car , class:'form-control' , required: true %>
+      </div>
+      <div class="form-group">
+        <%= form.label :วันที่สร้างเอกสาร , class:'label-control' %>
+        <%= form.date_field :sent_date , class: 'form-control' , value: Time.now.strftime('%Y-%m-%d') , required: true %>
+      </div>
+    </div>
+  <div class="form-group">
+    <%= form.submit 'บันทึกผล' , class: 'btn btn-success btn-rounded btn-block' %>
+    <%= link_to 'ย้อนกลับ' ,  outbounds_path , class: 'btn btn-warning btn-rounded btn-block' %>
+  </div>
+<% end %>
