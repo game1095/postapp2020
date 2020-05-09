@@ -1,6 +1,8 @@
 <h1 class="text-center">รายละเอียด</h1>
 <div class="col-lg-12">
   <%= link_to 'ย้อนกลับ' , outbounds_path , class: 'btn btn-danger' %>
+  <%= link_to 'สแกนสิ่งป้ายปากถุง' , new_outbound_bag_path(@outbound.id) , class: 'btn btn-success' %>
+  <%= link_to ' พิมพ์เอกสาร' , outbound_path(@outbound.id , 'pdf') , class: 'btn btn-outline btn-info fa fa-print' , target:'_blank'%>
   <div class="panel panel-default">
     <div class="panel-heading">รายละเอียด ป.58 เลขที่ <%= @outbound.outbound_number %></div>
     <div class="panel-body">

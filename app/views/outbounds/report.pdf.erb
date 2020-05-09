@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <%= wicked_pdf_stylesheet_link_tag 'pdf' %>
+    <title></title>
+  </head>
+  <body>
+    <h3 class="text-center">บัญชีมอบหมายถุงไปรษณีย์ในประเทศ ป.58</h3>
+    <h6 class="text-right">เอกสาร ศป.นว</h6>
+    <div class="row">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="row">
+            <strong>ของที่ทำการ : </strong> ศป.นครสวรรค์
+            <strong>ปลายทาง : </strong> <%= @outbound.destination %>
+            <strong>เที่ยวประจำวันที่  : </strong> <%= @outbound.sent_date.strftime("%d - %b - %y") %>
+            <strong>ทะเบียนรถ : </strong> <%= @outbound.car %>
+            <strong>หมายเลขสายรัดพลาสติก : </strong> <%= @outbound.strap %>
+           </div>
+        </div>
+      </div>
+      
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <table class="table">
+            <thead>
+              <th>ลำดับ</th>
+              <th>ป้ายปากถุง</th>
+              <th>ประเภทบริการ</th>
+              <th>ต้นทาง</th>
+              <th>ปลายทาง</th>
+            </thead>
+            <tbody>
+              <% count = 0 %>
+              <% @bags.each do |bag| %>
+              <tr>
+                <td><%= count+=1 %></td>
+                <td><%= bag.number %></td>
+                <td><%= bag.service %></td>
+                <td><%= bag.origin %></td>
+                <td><%= bag.destination %></td>
+              </tr>
+              <% end%>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <strong>จำนวนถุงทั้งหมด : </strong><%= @bags.count %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <p>ลงชื่อผู้ส่งมอบ................................................... &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;ลงชื่อผู้ขนส่ง................................................... &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;ลงชื่อผู้รับมอบ..................................................</p>
+              <p>(..................................................................)  &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(...............................................................)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(............................................................)</p>
+              <p>วันเดือนปี............................. เวลา.................. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;วันเดือนปี............................. เวลา.................. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;วันเดือนปี............................. เวลา.................. </p>
+            </div>
+          </div>
+        </div>
+    </div>
+  </body>
+</html>

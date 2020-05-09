@@ -15,6 +15,9 @@ gem 'bootstrap-sass', '~> 3.4.1'
 gem 'sassc-rails', '>= 2.1.0'
 gem 'jquery-rails'
 gem 'rails_admin', '~> 2.0'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary', '0.12.4'
+
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
