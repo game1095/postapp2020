@@ -22,29 +22,29 @@
   </div>
 
   <div class="panel panel-default">
-  <div class="panel-heading">รายละเอียดถุง</div>
-  <div class="panel-body">
-    <table class="table table-hover table-bordered">
-      <thead>
-        <th>#</th>
-        <th>เลขป้ายปากถุง</th>
-        <th>บริการ</th>
-        <th>ต้นทาง</th>
-        <th>ปลายทาง</th>
-      </thead>
-      <tbody>
-        <% count = 0 %>
-        <% @bags.each do |bag| %>
-        <tr>
-          <td><%= count += 1 %></td>
-          <td><%= bag.number %></td>
-          <td><%= bag.service %></td>
-          <td><%= bag.origin %></td>
-          <td><%= bag.destination %></td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
+    <div class="panel-heading">รายละเอียดถุง</div>
+    <div class="panel-body">
+      <table class="table table-hover table-bordered">
+        <thead>
+          <th>#</th>
+          <th>เลขป้ายปากถุง</th>
+          <th>บริการ</th>
+          <th>ต้นทาง</th>
+          <th>ปลายทาง</th>
+        </thead>
+        <tbody>
+          <% count = 0 %>
+          <% @bags.each do |bag| %>
+          <tr>
+            <td><%= count += 1 %></td>
+            <td><%= bag.number %></td>
+            <td><%= bag.service %></td>
+            <td><%= bag.origin %></td>
+            <td><%= bag.destination %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
-</div>
 </div>
