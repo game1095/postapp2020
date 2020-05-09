@@ -12,7 +12,7 @@
         <strong>หมายเลขสายรัด : </strong><%= outbound.strap %> <br>
         <strong>วันที่ส่งมอบ : </strong><%= outbound.sent_date.strftime("%d-%b-%C") %> <br>
         <strong>จำนวนสิ่งของ : </strong> <br>
-        <button type="button" class="btn btn-success">สแกนถุง</button>
+        <%= link_to 'สแกนสิ่งป้ายปากถุง' , new_outbound_bag_path(outbound.id) , class: 'btn btn-success' %>
         <%= link_to 'รายละเอียดเพิ่มเติม' , outbound_path(outbound.id) , class:'btn btn-primary' %>
         <button type="button" class="btn btn-success">พิมพ์บัญชี ป.58</button>
       </div>

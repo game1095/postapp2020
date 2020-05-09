@@ -2,16 +2,16 @@
 <div class="col-lg-12">
   <%= link_to 'ย้อนกลับ' , outbounds_path , class: 'btn btn-danger' %>
   <div class="panel panel-default">
-    <div class="panel-heading">รายละเอียด ป.58 เลขที่ ........</div>
+    <div class="panel-heading">รายละเอียด ป.58 เลขที่ <%= @outbound.outbound_number %></div>
     <div class="panel-body">
       <div class="col-lg-12">
         <div class="col-lg-6">
-          <strong>เลขที่</strong> <br>
+          <strong>เลขที่ : </strong><%= @outbound.outbound_number %> <br>
           <strong>ต้นทาง : </strong><%= @outbound.origin %> <br>
           <strong>ปลายทาง: </strong><%= @outbound.destination %> <br>
         </div>
         <div class="col-lg-6">
-          <strong>วันที่เอกสาร : </strong><%= @outbound.sent_date %>  <br>
+          <strong>วันที่เอกสาร : </strong><%= @outbound.sent_date.strftime("%d/%B/%y") %>  <br>
           <strong>เลขที่สายรัด : </strong><%= @outbound.strap %> <br>
           <strong>ทะเบียนรถ : </strong><%= @outbound.car %> <br>
         </div>
