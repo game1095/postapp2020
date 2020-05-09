@@ -19,6 +19,14 @@ class OutboundsController < ApplicationController
   def show
     @outbound = Outbound.find(params[:id])
     @bags = Bag.where(outbound_id: @outbound)
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render template: 'outbounds/report',
+        pdf: 'report',
+        page_size: 'A4'
+      end
+    end
   end
 
   private
