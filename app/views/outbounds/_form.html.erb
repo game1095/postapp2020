@@ -3,7 +3,7 @@
     <div class="col-lg-6">
       <div class="form-group">
         <%= form.label :เลขที่เอกสาร , class: 'label-control' %>
-        <%= form.text_field :outbound_number , class: ' form-control' , value: Time.now.strftime('%d%m%y')+rand(00000..99999).to_s %>
+        <%= form.text_field :outbound_number , class: ' form-control' , value: Time.now.strftime('%d%m%y')+rand(00000..99999).to_s , readonly: true %>
       </div>
       <div class="form-group">
         <%= form.label :ต้นทาง , class: 'label-control'%>
