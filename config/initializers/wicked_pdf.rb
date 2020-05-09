@@ -18,4 +18,5 @@ WickedPdf.config = {
   # Layout file to be used for all PDFs
   # (but can be overridden in `render :pdf` calls)
   # layout: 'pdf.html',
+  exe_path: Rails.env.production? ? '/path/to/bin/wkhtmltopdf' : '/usr/local/bin/wkhtmltopdf'
 }
