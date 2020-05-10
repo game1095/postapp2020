@@ -8,22 +8,17 @@
 #
 # https://github.com/mileszs/wicked_pdf/blob/master/README.md
 
-WickedPdf.config ||= {}
-WickedPdf.config.merge!({
-  # your extra configurations here
-})
+WickedPdf.config = {
+  # Path to the wkhtmltopdf executable: This usually isn't needed if using
+  # one of the wkhtmltopdf-binary family of gems.
+  # exe_path: '/usr/local/bin/wkhtmltopdf',
+  #   or
+  # exe_path: Gem.bin_path('wkhtmltopdf-binary', 'wkhtmltopdf')
 
-def wicked_pdf_asset(*sources)
-  sources.collect { |source|
-    asset = Rails.application.assets.find_asset("#{source}.scss")
-
-    if asset.nil?
-      #raise "could not find asset for #{source}.css"
-    else
-      "<style type='text/css'>#{asset.body}</style>"
-    end
-  }.join("\n").gsub(/url\(['"](.+)['"]\)(.+)/,%[url("#{wicked_pdf_image_location("\\1")}")\\2]).html_safe
-end
+  # Layout file to be used for all PDFs
+  # (but can be overridden in `render :pdf` calls)
+  # layout: 'pdf.html',
+}
 if Rails.env.production?
   wkhtmltopdf_path = "#{Rails.root}/bin/wkhtmltopdf-amd64"
 else
