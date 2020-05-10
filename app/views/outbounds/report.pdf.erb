@@ -6,6 +6,11 @@
     <title></title>
   </head>
   <body>
+    <% if params[:debug].present? %>
+      <%= stylesheet_link_tag 'documents' %>
+    <% else %>
+      <%= wicked_pdf_stylesheet_link_tag 'documents' %>
+    <% end %>
     <h3 class="text-center">บัญชีมอบหมายถุงไปรษณีย์ในประเทศ ป.58</h3>
     <h6 class="text-right">เอกสาร ศป.นว</h6>
     <div class="row">
