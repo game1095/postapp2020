@@ -1,5 +1,7 @@
-@import "bootstrap-sprockets";
-@import "bootstrap";
 table, tr, td, th, tbody, thead, tfoot {
     page-break-inside: avoid !important;
+}
+
+.table-bordered {
+  border: 1px solid #EBEBEB;
 }
