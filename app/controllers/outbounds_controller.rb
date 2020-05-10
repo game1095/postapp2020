@@ -25,6 +25,7 @@ class OutboundsController < ApplicationController
         render template: 'outbounds/report',
         pdf: 'report',
         page_size: 'A4',
+        encoding: "UTF-8",
         :show_as_html => params[:debug].present?
       end
     end
