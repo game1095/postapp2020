@@ -11,12 +11,12 @@
     <% else %>
       <%= stylesheet_link_tag wicked_pdf_asset_base64 'report' %>
     <% end %>
-    <h3 class="text-center">บัญชีมอบหมายถุงไปรษณีย์ในประเทศ ป.58</h3>
-    <h6 class="text-right">เอกสาร ศป.นว</h6>
+    <h3 class="text-center">POR.58</h3>
+    <h6 class="text-right">Nakhon Sawan Mailcenter 60010</h6>
       <div class="panel panel-default">
         <div class="panel-body">
           <div class="row">
-            <strong>Origin : </strong> ศป.นครสวรรค์
+            <strong>Origin : </strong> <%= @outbound.origin %>
             <strong>Destination : </strong> <%= @outbound.destination %>
             <strong>Dated  : </strong> <%= @outbound.sent_date.strftime("%d - %b - %y") %>
             <strong>Car license : </strong> <%= @outbound.car %>
@@ -61,7 +61,7 @@
             <div class="panel-body">
               <p>Sender................................. &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Carrier..................................... &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Receiver.................................</p>
               <p>(...........................................) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(.............................................) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(..............................................)</p>
-              <p>Date................................ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Date................................ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Date................................</p>
+              <p>Date................................ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date................................ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Date................................</p>
             </div>
           </div>
         </div>
