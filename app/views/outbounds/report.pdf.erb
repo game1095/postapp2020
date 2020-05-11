@@ -11,26 +11,60 @@
     <% else %>
       <%= stylesheet_link_tag wicked_pdf_asset_base64 'report' %>
     <% end %>
-    <table class="table table-bordered">
-      <thead>
-        <th>#</th>
-        <th>Number</th>
-        <th>Service</th>
-        <th>Origin</th>
-        <th>Destination</th>
-      </thead>
-      <tbody>
-        <% count = 0 %>
-        <% @bags.each do |bag| %>
-        <tr>
-          <td><%= count += 1 %></td>
-          <td><%= bag.number %></td>
-          <td><%= bag.service %></td>
-          <td><%= bag.origin %></td>
-          <td><%= bag.destination %></td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
+    <h3 class="text-center">บัญชีมอบหมายถุงไปรษณีย์ในประเทศ ป.58</h3>
+    <h6 class="text-right">เอกสาร ศป.นว</h6>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="row">
+            <strong>Origin : </strong> ศป.นครสวรรค์
+            <strong>Destination : </strong> <%= @outbound.destination %>
+            <strong>Dated  : </strong> <%= @outbound.sent_date.strftime("%d - %b - %y") %>
+            <strong>Car license : </strong> <%= @outbound.car %>
+            <strong>Plastic Belt : </strong> <%= @outbound.strap %>
+           </div>
+        </div>
+      </div>
+
+       <div class="panel panel-default">
+        <div class="panel-body">
+          <table class="table table-bordered">
+            <thead>
+              <th>#</th>
+              <th>Number</th>
+              <th>Service</th>
+              <th>Origin</th>
+              <th>Destination</th>
+            </thead>
+            <tbody>
+              <% count = 0 %>
+              <% @bags.each do |bag| %>
+              <tr>
+                <td><%= count+=1 %></td>
+                <td><%= bag.number %></td>
+                <td><%= bag.service %></td>
+                <td><%= bag.origin %></td>
+                <td><%= bag.destination %></td>
+              </tr>
+              <% end%>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <strong>Total : </strong><%= @bags.count %>
+        </div>
+      </div>
+      <div class="row nobreak">
+        <div class="col-lg-12">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <p>Sender................................. &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Carrier..................................... &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Receiver.................................</p>
+              <p>(...........................................) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(.............................................) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(..............................................)</p>
+              <p>Date................................ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Date................................ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Date................................</p>
+            </div>
+          </div>
+        </div>
+      </div>
   </body>
 </html>
