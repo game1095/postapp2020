@@ -16,7 +16,7 @@ gem 'sassc-rails', '>= 2.1.0'
 gem 'jquery-rails'
 gem 'rails_admin', '~> 2.0'
 gem 'wicked_pdf'
-gem 'wkhtmltopdf-binary', '0.12.4'
+gem 'wkhtmltopdf_binary'
 gem 'rails_12factor', group: :production
 
 group :development, :test do
