@@ -3,14 +3,16 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <%= stylesheet_link_tag wicked_pdf_asset_base64 'report' %>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Tangerine">
     <title></title>
   </head>
   <body>
     <% if params[:debug].present? %>
-      <%= stylesheet_link_tag 'report' %>
+      <%= stylesheet_link_tag wicked_pdf_asset_base64 'report' %>
     <% else %>
-      <%= wicked_pdf_stylesheet_link_tag 'report' %>
+      <%= stylesheet_link_tag wicked_pdf_asset_base64 'report' %>
     <% end %>
-    <h3>บัญชีมอบหมายถุงไปรษณีย์ในประเทศ</h3>
+    <h3>aking the Web Beautiful</h3>
   </body>
 </html>
