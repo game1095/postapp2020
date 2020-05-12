@@ -1,6 +1,22 @@
 <h1 class="text-center">จัดการ ป.58</h1>
-<%= link_to 'กลับสู่หน้าหลัก' , root_path , class: 'btn btn-danger' %>
-<%= link_to 'สร้าง ป.58' , new_outbound_path , class: 'btn btn-primary' %>
+<div class="col-lg-3">
+  <div class="form-group">
+    <%= link_to 'กลับสู่หน้าหลัก' , root_path , class: 'btn btn-danger' %>
+    <%= link_to 'สร้าง ป.58' , new_outbound_path , class: 'btn btn-primary' %>
+  </div>
+</div>
+
+<div class="col-lg-8">
+    <div class="form-group">
+      <%= form_tag(outbounds_path , method: :get) do%>
+        <%= text_field_tag(:search , params[:search] , placeholder:'ค้นหาโดยหมายเลขเอกสาร' , size: 100) %>
+        <%= submit_tag ("ค้นหา") , class: 'btn btn-info' %>
+        <%= link_to "แสดงป.58 ทั้งหมด" , outbounds_path , class: 'btn btn-info' %>
+      <% end %>
+    </div>
+</div>
+
+
 <div class="col-lg-12">
   <% @outbounds.each do |outbound| %>
   <div class="col-lg-3">

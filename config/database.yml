@@ -15,7 +15,7 @@ development:
   pool: 5
   host: localhost
   username: postgres
-  password: 123456
+  password: root
 
 test:
   <<: *default
@@ -25,7 +25,7 @@ test:
   pool: 5
   host: localhost
   username: postgres
-  password: 123456
+  password: root
 
 production:
   <<: *default
@@ -35,4 +35,4 @@ production:
   pool: 5
   host: localhost
   username: postgres
-  password: 123456
+  password: root
