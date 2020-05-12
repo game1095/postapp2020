@@ -32,6 +32,7 @@
           <th>บริการ</th>
           <th>ต้นทาง</th>
           <th>ปลายทาง</th>
+          <th></th>
         </thead>
         <tbody>
           <% count = 0 %>
@@ -42,6 +43,12 @@
             <td><%= bag.service %></td>
             <td><%= bag.origin %></td>
             <td><%= bag.destination %></td>
+            <td>
+              <%= link_to outbound_bag_path(@outbound.id , bag) , method: :delete  do %>
+
+              <% end %>
+              <%= link_to "ลบ" , outbound_bag_path(@outbound.id , bag) , method: :delete , data:{confirm: 'คุณยืนยันที่จะลบหมายเลขป้ายป้ายปากถุง '+bag.number+" ใช่หรือไม่"} %>
+            </td>
           </tr>
           <% end %>
         </tbody>

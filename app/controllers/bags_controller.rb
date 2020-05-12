@@ -14,7 +14,15 @@ class BagsController < ApplicationController
     else
       render 'new'
     end
+  end
 
+  def destroy
+    @bag = Bag.find(params[:id])
+    if @bag.destroy
+      redirect_to outbound_path(params[:outbound_id])
+    else
+      render outbound_bags_path
+    end
   end
 
   private
