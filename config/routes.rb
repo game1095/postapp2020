@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root to: 'home#index'
   resources :outbounds do
-    resources :bags
+  	resources :bags
+  	resources :prints
+  	# get '/static_print' , to: 'outbounds#static_print'
+    
   end
 end

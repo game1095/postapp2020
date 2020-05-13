@@ -1,5 +1,4 @@
 <h1 class="text-center">สแกนสิ่งของ</h1>
 <%= link_to 'ย้อนกลับ' , outbounds_path , class: 'btn btn-danger' %>
 <%= link_to 'รายละเอียดเพิ่มเติม ป.58' , outbound_path(@outbound.id) , class: 'btn btn-primary' %>
-<%= link_to ' พิมพ์เอกสาร' , outbound_path(@outbound.id , 'pdf') , class: 'btn btn-outline btn-info fa fa-print' , target:'_blank'%>
 <%= render 'form' %>
