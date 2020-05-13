@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+    body {
+        height: 842px;
+        width: 595px;
+        /* to centre page on screen*/
+        margin-left: auto;
+        margin-right: auto;
+    }
+    </style>
+  </head>
+  <body>
+  	<h4 class="text-center">บัญชีมอบหมายถุงไปรษณีย์ในประเทศ ป.58</h4>
+	  <h6 class="text-right">เอกสาร ศป.นครสวรรค์</h6>
+
+	   <!-- แสดงข้อมูลทั่วไปของถุง -->
+	   <div class="panel-body">
+        <div class="row">
+          <strong>ต้นทาง : </strong> <%= @outbound.origin %>
+          <strong>ปลายทาง : </strong> <%= @outbound.destination %>
+          <strong>เอกสารวันที่  : </strong> <%= @outbound.sent_date.strftime("%d - %b - %y") %>
+          <strong>หมายเลขทะเบียนรถ : </strong> <%= @outbound.car %>
+          <strong>หมายเลขสายรัดพลาสติก : </strong> <%= @outbound.strap %>
+        </div>
+      </div>
+
+      <!-- แสดงหมายเลขสิ่งของ -->
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <table class="table table-bordered">
+            <thead>
+              <th>#</th>
+              <th>หมายเลขป้ายปากถุง</th>
+              <th>บริการ</th>
+              <th>ต้นทาง</th>
+              <th>ปลายทาง</th>
+            </thead>
+            <tbody>
+              <% count = 0 %>
+              <% @bags.each do |bag| %>
+              <tr>
+                <td><%= count+=1 %></td>
+                <td><%= bag.number %></td>
+                <td><%= bag.service %></td>
+                <td><%= bag.origin %></td>
+                <td><%= bag.destination %></td>
+              </tr>
+              <% end%>
+            </tbody>
+          </table>
+        </div>
+      </div> 
+
+      <!-- สรุปจำนวน -->
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <p class='text-right'><strong>จำนวนถุงทั้งสิ้น : </strong><%= @bags.count %></p>
+        </div>
+      </div>
+
+      <!-- ส่วนของการลงชื่อ -->
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <p>
+                ผู้ส่งมอบ............................&nbsp;&nbsp;&nbsp;
+                ผู้ขนส่ง.............................&nbsp;&nbsp;&nbsp;
+                ผู้รับมอบ............................&nbsp;&nbsp;&nbsp;
+              </p>
+              <p>
+                (......................................)&nbsp;&nbsp;&nbsp;&nbsp;
+                (......................................)&nbsp;&nbsp;&nbsp;&nbsp;
+                (......................................)&nbsp;&nbsp;&nbsp;&nbsp;
+              </p>
+              <p>
+                ว/ด/ป............. เวลา..........&nbsp;&nbsp;&nbsp;&nbsp;
+                ว/ด/ป............. เวลา..........&nbsp;&nbsp;&nbsp;&nbsp;
+                ว/ด/ป............. เวลา..........
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+  </body>
+</html>

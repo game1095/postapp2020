@@ -18,6 +18,7 @@ class OutboundsController < ApplicationController
   end
 
   def show
+    puts ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>#{params[:id]}"
     @outbound = Outbound.find(params[:id])
     @bags = Bag.where(outbound_id: @outbound)
     respond_to do |format|
