@@ -27,6 +27,11 @@
           <%= form.label :หมายเลขบัญชีป58 %>
           <%= form.collection_select :outbound_id , Outbound.where(id: @outbound) , :id , :outbound_number ,{ selected: Outbound.where(id: @outbound) } , {class: 'form-control'} %>
         </div>
+
+        <!-- Hidden_field for select outbound_id -->
+        <% hidden_field(:outbound_id ,Outbound.where(id: @outbound)) %>
+        <!-- end -->
+        
       </div>
       <div class="form-group">
         <%= form.label :หมายเลขป้ายปากถุง , class: 'label-control' %>
