@@ -3,13 +3,13 @@ class BagsController < ApplicationController
     @bag = Bag.new
     @outbound = Outbound.find(params[:outbound_id])
     @bag_count = Bag.where(outbound_id: @outbound)
-    @bags = Bag.where(outbound_id: @outbound).order(created_at: :desc).last(5)
+    @bags = Bag.where(outbound_id: @outbound).last(5).reverse
   end
   def create
     @outbound = Outbound.find(params[:outbound_id])
     @bag = Bag.find_or_initialize_by(bag_params)
     if @bag.persisted?
-      @bag.destroy
+        @bag.destroy
       redirect_to new_outbound_bag_path
     else
       @bag.save
