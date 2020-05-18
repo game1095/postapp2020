@@ -22,17 +22,11 @@
 <%= form_for [@outbound , @bag] do |form| %>
   <div class="row">
     <div class="col-lg-12">
-      <div class="form-group">
-        <div class="form-group">
-          <%= form.label :หมายเลขบัญชีป58 %>
-          <%= form.collection_select :outbound_id , Outbound.where(id: @outbound) , :id , :outbound_number ,{ selected: Outbound.where(id: @outbound) } , {class: 'form-control'} %>
-        </div>
-
-        <!-- Hidden_field for select outbound_id -->
-        <% hidden_field(:outbound_id ,Outbound.where(id: @outbound)) %>
-        <!-- end -->
+      
+      <!-- Hidden_field for select outbound_id -->
+      <% hidden_field(:outbound_id ,Outbound.where(id: @outbound)) %>
+      <!-- end -->
         
-      </div>
       <div class="form-group">
         <%= form.label :หมายเลขป้ายปากถุง , class: 'label-control' %>
         <%= form.text_field :number , class: ' form-control' , required: true , autofocus: true %>
