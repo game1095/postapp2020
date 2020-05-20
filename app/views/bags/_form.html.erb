@@ -10,7 +10,7 @@
             <strong>ปลายทาง: </strong><%= @outbound.destination %> <br>
           </div>
           <div class="col-lg-6">
-            <strong>วันที่เอกสาร : </strong><%= @outbound.sent_date.strftime("%d/%B/%y") %>  <br>
+            <strong>วันที่เอกสาร : </strong><%= @outbound.sent_date %>  <br>
             <strong>เลขที่สายรัด : </strong><%= @outbound.strap %> <br>
             <strong>ทะเบียนรถ : </strong><%= @outbound.car %> <br>
           </div>
@@ -23,9 +23,10 @@
   <div class="row">
     <div class="col-lg-12">
       
-      <!-- Hidden_field for select outbound_id -->
-      <% hidden_field(:outbound_id ,Outbound.where(id: @outbound)) %>
-      <!-- end -->
+     <div class="form-group">
+      <%= form.label :หมายเลขบัญชีป58 %>
+      <%= form.collection_select :outbound_id , Outbound.where(id: @outbound) , :id , :outbound_number ,{ selected: Outbound.where(id: @outbound) } , {class: 'form-control'} %>
+      </div>
         
       <div class="form-group">
         <%= form.label :หมายเลขป้ายปากถุง , class: 'label-control' %>

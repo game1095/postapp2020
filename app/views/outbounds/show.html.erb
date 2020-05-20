@@ -2,7 +2,7 @@
 <div class="col-lg-12">
   <%= link_to 'ย้อนกลับ' , outbounds_path , class: 'btn btn-danger' %>
   <%= link_to 'สแกนสิ่งป้ายปากถุง' , new_outbound_bag_path(@outbound.id) , class: 'btn btn-success' %>
-  <%= link_to ' พิมพ์เอกสาร' , outbound_print_path(@outbound.id)  , class: 'btn btn-outline btn-info fa fa-print' , target:'_blank'%>
+  <%= link_to ' พิมพ์เอกสาร' , outbound_path(@outbound.id , 'pdf')  , class: 'btn btn-outline btn-info fa fa-print' , target:'_blank'%>
   <div class="panel panel-default">
     <div class="panel-heading">รายละเอียด ป.58 เลขที่ <%= @outbound.outbound_number %></div>
     <div class="panel-body">
@@ -45,7 +45,6 @@
             <td><%= bag.destination %></td>
             <td>
               <%= link_to outbound_bag_path(@outbound.id , bag) , method: :delete  do %>
-
               <% end %>
               <%= link_to "ลบ" , outbound_bag_path(@outbound.id , bag) , method: :delete , data:{confirm: 'คุณยืนยันที่จะลบหมายเลขป้ายป้ายปากถุง '+bag.number+" ใช่หรือไม่"} %>
             </td>
@@ -55,5 +54,4 @@
       </table>
     </div>
   </div>
-
 </div>

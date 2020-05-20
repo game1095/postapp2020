@@ -6,62 +6,67 @@
     <title></title>
   </head>
   <body>
-    <% if params[:debug].present? %>
-      <%= stylesheet_link_tag wicked_pdf_asset_base64 'report' %>
-    <% else %>
-      <%= stylesheet_link_tag wicked_pdf_asset_base64 'report' %>
-    <% end %>
-    <h3 class="text-center"> 58</h3>
-    <h6 class="text-right">Nakhon Sawan Mailcenter 60010</h6>
+    <h3 class="text-center">บัญชีมอบหมายถุงไปรษณีย์ในประเทศ (ป.58)</h3>
+    <h6 class="text-right">เอกสาร ศป.นครสวรรค์</h6>
+      
       <div class="panel panel-default">
         <div class="panel-body">
-          <div class="row">
-            <strong>Origin : </strong> <%= @outbound.origin %>
-            <strong>Destination : </strong> <%= @outbound.destination %>
-            <strong>Dated  : </strong> <%= @outbound.sent_date.strftime("%d - %b - %y") %>
-            <strong>Car license : </strong> <%= @outbound.car %>
-            <strong>Plastic Belt : </strong> <%= @outbound.strap %>
-           </div>
+          <p class="text-center">
+            <strong>จาก : </strong><%= @outbound.origin %>  
+            <strong>วันที่เอกสาร : </strong><%= @outbound.sent_date.strftime("%d/%m/%y") %>
+            <strong>เลขที่เอกสาร : </strong><%= @outbound.outbound_number %>
+          </p>
+          <p class="text-center">
+            <strong>ถึง : </strong><%= @outbound.destination %>
+            <strong>เลขที่สายรัด : </strong><%= @outbound.strap %>
+            <strong>ทะเบียนรถ : </strong><%= @outbound.car %>
+          </p>
         </div>
       </div>
-
-       <div class="panel panel-default">
-        <div class="panel-body">
-          <table class="table table-bordered">
-            <thead>
-              <th>#</th>
-              <th>Number</th>
-              <th>Service</th>
-              <th>Origin</th>
-              <th>Destination</th>
-            </thead>
-            <tbody>
-              <% count = 0 %>
-              <% @bags.each do |bag| %>
-              <tr>
-                <td><%= count+=1 %></td>
-                <td><%= bag.number %></td>
-                <td><%= bag.service %></td>
-                <td><%= bag.origin %></td>
-                <td><%= bag.destination %></td>
-              </tr>
-              <% end%>
-            </tbody>
-          </table>
-        </div>
-      </div>
+      <table class="table table-bordered">
+        <thead>
+          <th class="text-center">#</th>
+          <th class="text-center">หมายเลขป้ายปากถุง</th>
+          <th class="text-center">บริการ</th>
+          <th class="text-center">ต้นทาง</th>
+          <th class="text-center">ปลายทาง</th>
+        </thead>
+        <tbody>
+          <% count = 0 %>
+          <% @bags.each do |bag| %>
+          <tr>
+            <td class="text-center"><%= count+=1 %></td>
+            <td class="text-center"><%= bag.number %></td>
+            <td class="text-center"><%= bag.service %></td>
+            <td class="text-center"><%= bag.origin %></td>
+            <td class="text-center"><%= bag.destination %></td>
+          </tr>
+          <% end%>
+        </tbody>
+      </table>
       <div class="panel panel-default">
         <div class="panel-body">
-          <strong>Total : </strong><%= @bags.count %>
+          <p class="text-right"><strong>จำนวนถุงทั้งหมด : </strong><%= @bags.count %></p>
         </div>
       </div>
       <div class="row nobreak">
         <div class="col-lg-12">
           <div class="panel panel-default">
             <div class="panel-body">
-              <p>Sender................................. &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Carrier..................................... &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Receiver.................................</p>
-              <p>(...........................................) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(.............................................) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(..............................................)</p>
-              <p>Date................................ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date................................ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Date................................</p>
+              <p>
+              ลงชื่อผู้ส่งมอบ..............................&nbsp;&nbsp;&nbsp;ลงชื่อผู้ขนส่ง...............................&nbsp;&nbsp;&nbsp;&nbsp;
+              ลงชื่อผู้รับมอบ...............................
+            </p>
+            <p>
+              &nbsp;(..............................................)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              (..............................................)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              (..............................................)
+            </p>
+            <p>
+              ลงวันที่.......................................&nbsp;&nbsp;&nbsp;&nbsp;
+              ลงวันที่.......................................&nbsp;&nbsp;&nbsp;&nbsp;
+              ลงวันที่...........................................
+            </p>
             </div>
           </div>
         </div>
