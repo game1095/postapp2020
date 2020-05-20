@@ -25,9 +25,7 @@ class OutboundsController < ApplicationController
       format.pdf do
         render template: 'outbounds/report',
         pdf: 'report',
-        page_size: 'A4',
-        wkhtmltopdf: "#{Rails.root}/bin/wkhtmltopdf-amd64",
-        :show_as_html => params[:debug].present?
+        page_size: 'A4'
       end
     end
   end
