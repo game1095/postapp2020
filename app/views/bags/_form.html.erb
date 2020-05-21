@@ -26,10 +26,9 @@
       <%= form.label :หมายเลขบัญชีป58 %>
       <%= form.collection_select :outbound_id , Outbound.where(id: @outbound) , :id , :outbound_number ,{ selected: Outbound.where(id: @outbound) } , {class: 'form-control'} %>
       </div>
-        
       <div class="form-group">
         <%= form.label :หมายเลขป้ายปากถุง , class: 'label-control' %>
-        <%= form.text_field :number , class: ' form-control' , required: true , autofocus: true , autocomplete: "off" %>
+        <%= form.text_field :number , class: ' form-control' ,  autofocus: true , autocomplete: "off" %>
       </div>
     </div>
     <div class="col-lg-6">
