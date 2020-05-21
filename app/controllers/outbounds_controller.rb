@@ -19,7 +19,8 @@ class OutboundsController < ApplicationController
 
   def show
     @outbound = Outbound.find(params[:id])
-    @bags = Bag.where(outbound_id: @outbound)
+    # Sort bag number by destination  with model method
+    @bags = Bag.where(outbound_id: @outbound).sort_by(&:destination)
     respond_to do |format|
       format.html
       format.pdf do

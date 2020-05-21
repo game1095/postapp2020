@@ -10,7 +10,7 @@
             <strong>ปลายทาง: </strong><%= @outbound.destination %> <br>
           </div>
           <div class="col-lg-6">
-            <strong>วันที่เอกสาร : </strong><%= @outbound.sent_date %>  <br>
+            <strong>วันที่เอกสาร : </strong><%= @outbound.sent_date.strftime("%d/%m/%y") %>  <br>
             <strong>เลขที่สายรัด : </strong><%= @outbound.strap %> <br>
             <strong>ทะเบียนรถ : </strong><%= @outbound.car %> <br>
           </div>
@@ -21,8 +21,7 @@
 </div>
 <%= form_for [@outbound , @bag] do |form| %>
   <div class="row">
-    <div class="col-lg-12">
-      
+    <div class="col-lg-6">
      <div class="form-group">
       <%= form.label :หมายเลขบัญชีป58 %>
       <%= form.collection_select :outbound_id , Outbound.where(id: @outbound) , :id , :outbound_number ,{ selected: Outbound.where(id: @outbound) } , {class: 'form-control'} %>
@@ -30,18 +29,25 @@
         
       <div class="form-group">
         <%= form.label :หมายเลขป้ายปากถุง , class: 'label-control' %>
-        <%= form.text_field :number , class: ' form-control' , required: true , autofocus: true %>
+        <%= form.text_field :number , class: ' form-control' , required: true , autofocus: true , autocomplete: "off" %>
       </div>
-
+    </div>
+    <div class="col-lg-6">
+      <div class="form-group">
+        <h3><strong>จำนวนสิ่งของที่สแกนแล้ว : </strong><%= @bag_count.count %> ชิ้น</h3>    
+      </div>
+      <br>
+      <div class="form-group">
+        <h3><strong>ป้ายปากถุงที่สแกนล่าสุด : </strong><%= @last_bag.first.number_check %></h3>
+      </div>
+    </div>
+  </div>
+  <div  class="row">
+    <div class="col-lg-12">
       <div class="form-group">
         <%= form.submit 'บันทึกผล' , class: 'btn btn-success btn-rounded btn-block' %>
       </div>
     </div>
   </div>
-
 <% end %>
-<div class="row">
-  <div class="form-group">
-    <h3><strong>จำนวนสิ่งของที่สแกนแล้ว : </strong><%= @bag_count.count %> ชิ้น</h3>
-  </div>
-</div>  
+

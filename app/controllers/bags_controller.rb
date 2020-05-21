@@ -1,9 +1,9 @@
 class BagsController < ApplicationController
   def new
-    @bag = Bag.new
+    @bag = Bag.new()
     @outbound = Outbound.find(params[:outbound_id])
     @bag_count = Bag.where(outbound_id: @outbound)
-    @bags = Bag.where(outbound_id: @outbound).last(1).reverse
+    @last_bag = Bag.where(outbound_id: @outbound).last(1).reverse
   end
 
   def create
@@ -29,6 +29,6 @@ class BagsController < ApplicationController
 
   private
     def bag_params
-      params.require(:bag).permit(:outbound_id , :number)
+      params.require(:bag).permit(:outbound_id , :number )
     end
 end
