@@ -26,8 +26,7 @@
         <strong>ปลายทาง : </strong><%= outbound.destination %> <br>
         <strong>ทะเบียนรถ : </strong><%= outbound.car %> <br>
         <strong>หมายเลขสายรัด : </strong><%= outbound.strap %> <br>
-        <strong>วันที่ส่งมอบ : </strong><%= outbound.sent_date.strftime("%d-%b-%C") %> <br>
-        <strong>จำนวนสิ่งของ : </strong> <br>
+        <strong>วันที่ส่งมอบ : </strong><%= outbound.sent_date.strftime("%d/%m/%C") %> <br>
         <%= link_to 'สแกนสิ่งป้ายปากถุง' , new_outbound_bag_path(outbound.id) , class: 'btn btn-success' %>
         <%= link_to 'รายละเอียดเพิ่มเติม' , outbound_path(outbound.id) , class:'btn btn-primary' %>
       </div>
