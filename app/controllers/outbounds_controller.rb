@@ -1,7 +1,7 @@
 class OutboundsController < ApplicationController
   def index
-    # @outbounds = Outbound.all
-    @outbounds = Outbound.search(params[:search])
+    @outbounds = Outbound.search(params[:search]).order(created_at: :desc)
+
   end
 
   def new

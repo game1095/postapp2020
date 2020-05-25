@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  root to: 'home#index'
+  root to: 'outbounds#index'
+  get 'home' , to: 'home#index'
   resources :feedbacks
   resources :outbounds do
   	resources :bags
