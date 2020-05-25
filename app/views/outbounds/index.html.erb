@@ -1,19 +1,25 @@
 <h1 class="text-center">จัดการ ป.58</h1>
-<div class="col-lg-3">
-  <div class="form-group">
-    <%= link_to 'กลับสู่หน้าหลัก' , root_path , class: 'btn btn-danger' %>
-    <%= link_to 'สร้าง ป.58' , new_outbound_path , class: 'btn btn-primary' %>
+<div class="row">
+  <div class="col-lg-3">
+    <div class="form-group">
+      <%= link_to 'กลับสู่หน้าหลัก' , home_path , class: 'btn btn-danger' %>
+      <%= link_to 'สร้าง ป.58' , new_outbound_path , class: 'btn btn-primary' %>
+    </div>
   </div>
 </div>
 
-<div class="col-lg-8">
+<div class="row">
+  <div class="col-lg-9">
     <div class="form-group">
       <%= form_tag(outbounds_path , method: :get) do%>
-        <%= text_field_tag(:search , params[:search] , placeholder:'ค้นหาโดยหมายเลขเอกสาร' , size: 100) %>
-        <%= submit_tag ("ค้นหา") , class: 'btn btn-info' %>
-        <%= link_to "แสดงป.58 ทั้งหมด" , outbounds_path , class: 'btn btn-info' %>
+        <%= text_field_tag(:search , params[:search] , class: 'form-control' , placeholder:'ค้นหาโดยหมายเลขเอกสาร' , size: 100) %>
       <% end %>
     </div>
+  </div>
+  <div class="col-lg-3">
+    <%= submit_tag ("ค้นหา") , class: 'btn btn-info' %>
+        <%= link_to "แสดงป.58 ทั้งหมด" , outbounds_path , class: 'btn btn-info' %>
+  </div>
 </div>
 
 
@@ -24,8 +30,6 @@
       <div class="container">
         <strong>เลขที่เอกสาร : </strong><%= outbound.outbound_number %><br>
         <strong>ปลายทาง : </strong><%= outbound.destination %> <br>
-        <strong>ทะเบียนรถ : </strong><%= outbound.car %> <br>
-        <strong>หมายเลขสายรัด : </strong><%= outbound.strap %> <br>
         <strong>วันที่ส่งมอบ : </strong><%= outbound.sent_date.strftime("%d/%m/%C") %> <br>
         <%= link_to 'สแกนสิ่งป้ายปากถุง' , new_outbound_bag_path(outbound.id) , class: 'btn btn-success' %>
         <%= link_to 'รายละเอียดเพิ่มเติม' , outbound_path(outbound.id) , class:'btn btn-primary' %>
