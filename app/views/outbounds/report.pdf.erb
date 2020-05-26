@@ -23,7 +23,7 @@
           </p>
         </div>
       </div>
-      <table class="">
+      <table class="table table-borderless">
         <thead>
           <th class="text-center">#</th>
           <th class="text-center">หมายเลขป้ายปากถุง</th>
@@ -35,7 +35,7 @@
           <% count = 0 %>
           <% @bags.each do |bag| %>
           <tr>
-            <td class="text-center"><%= count+=1 %> | </td>
+            <td class="text-center"><%= count+=1 %></td>
             <td class="text-center"><%= bag.number_check %></td>
             <td class="text-center"><%= bag.service %></td>
             <td class="text-center"><%= bag.origin %></td>
