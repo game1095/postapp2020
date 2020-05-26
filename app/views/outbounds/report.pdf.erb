@@ -23,7 +23,7 @@
           </p>
         </div>
       </div>
-      <table class="table table-bordered">
+      <table class="">
         <thead>
           <th class="text-center">#</th>
           <th class="text-center">หมายเลขป้ายปากถุง</th>
@@ -35,7 +35,7 @@
           <% count = 0 %>
           <% @bags.each do |bag| %>
           <tr>
-            <td class="text-center"><%= count+=1 %></td>
+            <td class="text-center"><%= count+=1 %> | </td>
             <td class="text-center"><%= bag.number_check %></td>
             <td class="text-center"><%= bag.service %></td>
             <td class="text-center"><%= bag.origin %></td>
@@ -49,12 +49,12 @@
           <p class="text-right"><strong>จำนวนถุงทั้งหมด : </strong><%= @bags.count %></p>
         </div>
       </div>
-      <div class="row nobreak">
+      <div class="row nobreak:before ">
         <div class="col-lg-12">
           <div class="panel panel-default">
             <div class="panel-body">
               <p>
-              ลงชื่อผู้ส่งมอบ..............................&nbsp;&nbsp;&nbsp;ลงชื่อผู้ขนส่ง...............................&nbsp;&nbsp;&nbsp;&nbsp;
+              ลงชื่อผู้ส่งมอบ...............................&nbsp;&nbsp;&nbsp;ลงชื่อผู้ขนส่ง...............................&nbsp;&nbsp;&nbsp;&nbsp;
               ลงชื่อผู้รับมอบ..............................
             </p>
             <p>
@@ -63,9 +63,9 @@
               (....................................................)
             </p>
             <p>
-              ลงวันที่.......................................&nbsp;&nbsp;&nbsp;
-              ลงวันที่.......................................&nbsp;&nbsp;&nbsp;
-              ลงวันที่.......................................
+              ลงวันที่.......................เวลา............&nbsp;&nbsp;&nbsp;
+              ลงวันที่.......................เวลา............&nbsp;&nbsp;&nbsp;
+              ลงวันที่.......................เวลา............
             </p>
             </div>
           </div>

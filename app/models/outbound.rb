@@ -8,4 +8,13 @@ class Outbound < ApplicationRecord
   		Outbound.where('outbound_number LIKE ?', "%#{search.downcase}%")
   	end
   end
+
+  def name_check
+  	if self.name != nil
+  		return self.name 
+  	else
+  		return "-"
+  	end
+  end
+
 end
