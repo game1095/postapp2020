@@ -36,8 +36,8 @@
           <% @bags.each do |bag| %>
           <tr>
             <td class="text-center"><%= count+=1 %></td>
-            <td class="text-center"><%= bag.number_check %></td>
-            <td class="text-center"><%= bag.service %></td>
+            <td class="text-center"><%= bag.number_check.upcase %></td>
+            <td class="text-center"><%= bag.service.upcase %></td>
             <td class="text-center"><%= bag.origin %></td>
             <td class="text-center"><%= bag.destination %></td>
           </tr>
@@ -54,7 +54,7 @@
           <div class="panel panel-default">
             <div class="panel-body">
               <p>
-              ลงชื่อผู้ส่งมอบ...............................&nbsp;&nbsp;&nbsp;ลงชื่อผู้ขนส่ง...............................&nbsp;&nbsp;&nbsp;&nbsp;
+              ลงชื่อผู้ส่งมอบ....................................&nbsp;&nbsp;&nbsp;ลงชื่อผู้ขนส่ง...............................&nbsp;&nbsp;&nbsp;&nbsp;
               ลงชื่อผู้รับมอบ..............................
             </p>
             <p>
