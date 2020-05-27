@@ -1,6 +1,6 @@
 class Bag < ApplicationRecord
   belongs_to :outbound
-  validates :number , presence: true , length: {in: 18..18} , uniqueness: true
+  validates :number , presence: true , length: {in: 18..18} 
 
   def number_check
     if self.number
