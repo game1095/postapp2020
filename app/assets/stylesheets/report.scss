@@ -16,5 +16,8 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
  thead { display: table-header-group }
-    tfoot { display: table-row-group }
-    tr { page-break-inside: avoid }
+ tr { page-break-inside: avoid }
+
+ .table-condensed{
+  	font-size: 10px;
+  }
