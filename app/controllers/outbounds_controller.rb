@@ -33,6 +33,6 @@ class OutboundsController < ApplicationController
   
   private
     def outbound_params
-      params.require(:outbound).permit(:origin , :destination , :sent_date , :strap , :car , :outbound_number)
+      params.require(:outbound).permit(:origin , :destination , :sent_date , :strap , :car , :outbound_number , :name)
     end
 end
