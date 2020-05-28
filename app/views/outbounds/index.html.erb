@@ -31,7 +31,7 @@
       <div class="container">
         <strong>เลขที่เอกสาร : </strong><%= outbound.outbound_number %><br>
         <strong>ปลายทาง : </strong><%= outbound.destination %> <br>
-        <strong>วันที่ส่งมอบ : </strong><%= outbound.sent_date.strftime("%d/%m/%C") %> <br>
+        <strong>วัน/เวลาสร้างเอกสาร : </strong><%= outbound.sent_date.strftime("%d/%m/%C") %> <%= outbound.created_at.strftime("%H.%M") %><br>
         <strong>ชื่อผู้สร้าง : </strong><%= outbound.name_check %> <br>
         <%= link_to 'สแกนสิ่งป้ายปากถุง' , new_outbound_bag_path(outbound.id) , class: 'btn btn-success' %>
         <%= link_to 'รายละเอียดเพิ่มเติม' , outbound_path(outbound.id) , class:'btn btn-primary' %>
