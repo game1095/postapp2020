@@ -1,7 +1,6 @@
 class OutboundsController < ApplicationController
   def index
     @outbounds = Outbound.search(params[:search]).order(created_at: :desc)
-    # @outbounds = Outbound.where(sent_date: Date.today-1).search(params[:search]).order(created_at: :desc)
   end
 
   def new
