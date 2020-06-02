@@ -1,6 +1,15 @@
 class Bag < ApplicationRecord
   belongs_to :outbound
   validates :number , presence: true , length: {in: 18..18} 
+
+  def self.search(search)
+    if search.blank?
+      Bag.all
+    else
+      Bag.where('number LIKE ?', "%#{search.downcase}%")
+    end
+  end
+
   def number_check
     if self.number
       return self.number[0..6]+" "+self.number[7]+" "+self.number[8..12]+" "+self.number[13..17]

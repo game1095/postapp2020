@@ -1,4 +1,9 @@
 class BagsController < ApplicationController
+
+  def index
+    @bags = Bag.search(params[:search]).paginate(page: params[:page], per_page: 20)
+  end
+
   def new
     @bag = Bag.new()
     @outbound = Outbound.find(params[:outbound_id])
