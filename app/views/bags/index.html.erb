@@ -6,22 +6,28 @@
   </div>
 <div class="form-group">
       <%= form_tag(bags_path , method: :get) do%>
-        <%= text_field_tag(:search , params[:search] , class: 'form-control' , placeholder:'ค้นหาโดยหมายเลขเอกสาร' , size: 100) %>
+        <%= text_field_tag(:search , params[:search] , class: 'form-control' , placeholder:'ค้นหาโดยหมายเลขป้ายปากถุง' , size: 100) %>
       <% end %>
     </div>
 
-<table class="table table-hover table-bordered">
-	<thead>
-		<th class="text-center">เลขป้ายปากถุง</th>
-		<th></th>
-	</thead>
-	<tbody>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <table class="table table-hover table-bordered">
+  <thead>
+    <th class="text-center">เลขป้ายปากถุง</th>
+    <th class="text-center">ชื่อผู้สแกน</th>
+    <th class="text-center">วันที่เพิ่มถุงเข้าสู่ระบบ</th>
+  </thead>
+  <tbody>
       <% @bags.each do |bag| %>
       <tr>
-        <td class="text-center"><%= bag.number_check %></td>
-        <td class="text-center"><%= link_to "ดูรายละเอียด" ,  outbound_path(bag.outbound.id) %></td>
+        <td class="text-center"><%= link_to bag.number_check , outbound_path(bag.outbound.id) %></td>
+        <td class="text-center"><%= bag.outbound.name %></td>
+        <td class="text-center"><%= bag.created_at.strftime("%d/%m/%y")%></td>
       </tr>
       <% end %>
-	</tbody>
+  </tbody>
 </table>
+  </div>
+</div>
 <div class="text-center"><%= will_paginate @bags , renderer: BootstrapPagination::Rails  %></div>
