@@ -1,7 +1,7 @@
 class BagsController < ApplicationController
 
   def index
-    @bags = Bag.search(params[:search]).paginate(page: params[:page], per_page: 20)
+    @bags = Bag.search(params[:search]).paginate(page: params[:page], per_page: 20).order(created_at: :desc)
   end
 
   def new
