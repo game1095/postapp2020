@@ -19,6 +19,7 @@
     </div>
   </div>
 </div>
+
 <%= form_for [@outbound , @bag] do |form| %>
   <div class="row">
     <div class="col-lg-6">
@@ -33,11 +34,23 @@
     </div>
     <div class="col-lg-6">
       <div class="form-group">
-        <h2><strong>จำนวนสิ่งของที่สแกนแล้ว : </strong><%= @bag_count.count %> ชิ้น</h2>    
+        <% if flash[:alert] %>
+          <%= audio_tag("alert.mp3", autoplay: true) %>
+          <div class="alert alert-danger" role="alert">
+            <h3 class="text-center"><%= flash[:alert] %></h3>
+          </div>
+        <% elsif flash[:success] %>
+          <%= audio_tag("accept.mp3", autoplay: true) %>
+        <% elsif @bag.errors.any? %>
+          <%= audio_tag("alert.mp3", autoplay: true) %>
+        <% end %>
       </div>
-      <br>
       <div class="form-group">
-        <h2 style="color: <%= @outbound.check %>"><strong>ป้ายปากถุงที่สแกนล่าสุด : </strong><%= @last_bag[0].nil? ? "-" : @last_bag[0].number_check %></h2>
+        <h3><strong>จำนวนสิ่งของที่สแกนแล้ว : </strong><%= @bag_count.count %> ชิ้น</h3>    
+      </div>
+      <hr>
+      <div class="form-group">
+        <h3><strong>ป้ายปากถุงที่สแกนล่าสุด : </strong><%= @last_bag[0].nil? ? "-" : @last_bag[0].number_check %></h3>
       </div>
     </div>
   </div>
