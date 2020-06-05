@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  mount RailsAdmin::Engine => '/game', as: 'rails_admin'
   root to: 'outbounds#index'
   get 'home' , to: 'home#index'
   # printpage
