@@ -28,27 +28,29 @@
   <div class="panel panel-default">
     <div class="panel-heading">รายละเอียดถุง</div>
     <div class="panel-body">
-      <table class="table table-hover table-bordered" id="outbounds">
-        <thead>
-          <th class="text-center">#</th>
-          <th class="text-center">เลขป้ายปากถุง</th>
-          <th class="text-center">บริการ</th>
-          <th class="text-center">ต้นทาง</th>
-          <th class="text-center">ปลายทาง</th>
-        </thead>
-        <tbody>
-          <% count = 0 %>
-          <% @bags.each do |bag| %>
-          <tr>
-            <td class="text-center"><%= count += 1 %></td>
-            <td class="text-center"><%= bag.number_check.upcase%></td>
-            <td class="text-center"><%= bag.service.upcase %></td>
-            <td class="text-center"><%= bag.origin %></td>
-            <td class="text-center"><%= bag.destination %></td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
+      <div class="table-responsive">
+        <table class="table table-hover table-bordered" id="outbounds">
+          <thead>
+            <th class="text-center">#</th>
+            <th class="text-center">เลขป้ายปากถุง</th>
+            <th class="text-center">บริการ</th>
+            <th class="text-center">ต้นทาง</th>
+            <th class="text-center">ปลายทาง</th>
+          </thead>
+          <tbody>
+            <% count = 0 %>
+            <% @bags.each do |bag| %>
+            <tr>
+              <td class="text-center"><%= count += 1 %></td>
+              <td class="text-center"><%= bag.number_check.upcase%></td>
+              <td class="text-center"><%= bag.service.upcase %></td>
+              <td class="text-center"><%= bag.origin %></td>
+              <td class="text-center"><%= bag.destination %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>

@@ -10,33 +10,38 @@
 </div>
 
 <div class="row">
-  <div class="col-lg-9">
+  <div class="col-sm-9">
     <div class="form-group">
       <%= form_tag(outbounds_path , method: :get) do%>
         <%= text_field_tag(:search , params[:search] , class: 'form-control' , placeholder:'ค้นหาโดยหมายเลขเอกสาร' , size: 100) %>
       <% end %>
     </div>
   </div>
-  <div class="col-lg-3">
+  <div class="col-sm-3">
     <%= submit_tag ("ค้นหา") , class: 'btn btn-info' %>
     <%= link_to "แสดงป.58 ทั้งหมด" , outbounds_path , class: 'btn btn-info' %>
   </div>
 </div>
 <hr>
 
-<div class="col-lg-12">
+<div class="col-sm-12">
   <% @outbounds.each do |outbound| %>
-  <div class="col-lg-4">
-    <div class="jumbotron">
-      <div class="container">
+  <div class="col-sm-6">
+    <div class="well">
         <strong>เลขที่เอกสาร : </strong><%= outbound.outbound_number %><br>
         <strong>ปลายทาง : </strong><%= outbound.destination %> <br>
         <strong>วัน/เวลาสร้างเอกสาร : </strong><%= outbound.sent_date.strftime("%d/%m/%C") %> <%= outbound.created_at.strftime("%H.%M") %><br>
         <strong>ชื่อผู้สร้าง : </strong><%= outbound.name_check %> <br>
-        <%= link_to 'สแกนสิ่งป้ายปากถุง' , new_outbound_bag_path(outbound.id) , class: 'btn btn-success' %>
-        <%= link_to 'รายละเอียดเพิ่มเติม' , outbound_path(outbound.id) , class:'btn btn-primary' %>
-      </div>
+        <div class="row">
+          <div class="col-sm-5">
+            <%= link_to 'สแกนป้ายปากถุง' , new_outbound_bag_path(outbound.id) , class: 'btn btn-success btn-lg' %>
+          </div>
+          <div class="col-sm-7">
+            <%= link_to 'รายละเอียดเพิ่มเติม' , outbound_path(outbound.id) , class:'btn btn-primary btn-lg' %>
+          </div>
+        </div>
     </div>
   </div>
   <% end %>
 </div>
+<div class="text-center"><%= will_paginate @outbounds , renderer: BootstrapPagination::Rails  %></div>
