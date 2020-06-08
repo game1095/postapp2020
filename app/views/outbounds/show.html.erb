@@ -1,25 +1,35 @@
 <h1 class="text-center">รายละเอียดบัญชีมอบหมายถุงไปรษณีย์ในประเทศ ป.58</h1>
-<div class="col-lg-12">
-  <%= link_to 'ย้อนกลับ' , outbounds_path , class: 'btn btn-danger' %>
-  <%= link_to 'สแกนสิ่งป้ายปากถุง' , new_outbound_bag_path(@outbound.id) , class: 'btn btn-success' %>
-  <%= link_to ' พิมพ์เอกสารเรียงตามต้นทาง' , prints_origin_path(@outbound.id , 'pdf')  , class: 'btn btn-outline btn-primary fa fa-print' , target:'_blank'%>
-  <%= link_to ' พิมพ์เอกสารเรียงตามปลายทาง' , prints_destination_path(@outbound.id , 'pdf')  , class: 'btn btn-outline btn-info fa fa-print' , target:'_blank'%>
+<div class="col-xs-12">
+  <div class="row">
+    <div class="col-xs-5">
+      <%= link_to 'ย้อนกลับ' , outbounds_path , class: 'btn btn-danger' %>
+      <%= link_to 'สแกนสิ่งป้ายปากถุง' , new_outbound_bag_path(@outbound.id) , class: 'btn btn-success' %>
+    </div>
+    <div class="col-xs-7">
+      <%= link_to ' พิมพ์เรียงตามต้นทาง' , prints_origin_path(@outbound.id , 'pdf')  , class: 'btn btn-outline btn-primary fa fa-print' , target:'_blank'%>
+      <%= link_to ' พิมพ์เรียงตามปลายทาง' , prints_destination_path(@outbound.id , 'pdf')  , class: 'btn btn-outline btn-info fa fa-print' , target:'_blank'%>
+    </div>
+  </div>
   <hr>
-  <div class="panel panel-default">
-    <div class="panel-heading">รายละเอียด ป.58 เลขที่ <%= @outbound.outbound_number %></div>
-    <div class="panel-body">
-      <div class="col-lg-12">
-        <div class="col-lg-6">
-          <strong>เลขที่ : </strong><%= @outbound.outbound_number %> <br>
-          <strong>ต้นทาง : </strong><%= @outbound.origin %> <br>
-          <strong>ปลายทาง: </strong><%= @outbound.destination %> <br>
-          <strong>จำนวนถุงทั้งสิ้น </strong> <%= @bags.count%> ถุง <br>
-        </div>
-        <div class="col-lg-6">
-          <strong>วันที่เอกสาร : </strong><%= @outbound.sent_date.strftime("%d/%m/%y") %>  <br>
-          <strong>เลขที่สายรัด : </strong><%= @outbound.strap %> <br>
-          <strong>ทะเบียนรถ : </strong><%= @outbound.car %> <br>
-          <strong>ชื่อผู้สร้าง : </strong><%= @outbound.name_check %>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">รายละเอียด ป.58 เลขที่ <%= @outbound.outbound_number %></div>
+        <div class="panel-body">
+          <div class="col-xs-12">
+            <div class="col-xs-6">
+              <strong>เลขที่ : </strong><%= @outbound.outbound_number %> <br>
+              <strong>ต้นทาง : </strong><%= @outbound.origin %> <br>
+              <strong>ปลายทาง: </strong><%= @outbound.destination %> <br>
+              <strong>จำนวนถุงทั้งสิ้น </strong> <%= @bags.count%> ถุง <br>
+            </div>
+            <div class="col-xs-6">
+              <strong>วันที่เอกสาร : </strong><%= @outbound.sent_date.strftime("%d/%m/%y") %>  <br>
+              <strong>เลขที่สายรัด : </strong><%= @outbound.strap %> <br>
+              <strong>ทะเบียนรถ : </strong><%= @outbound.car %> <br>
+              <strong>ชื่อผู้สร้าง : </strong><%= @outbound.name_check %>
+            </div>
+          </div>
         </div>
       </div>
     </div>
