@@ -1,6 +1,6 @@
 <h1 class="text-center">จัดการ ป.58</h1>
 <div class="row">
-  <div class="col-lg-4">
+  <div class="col-sm-4">
     <div class="form-group">
       <%= link_to 'กลับสู่หน้าหลัก' , home_path , class: 'btn btn-danger' %>
       <%= link_to 'สร้าง ป.58' , new_outbound_path , class: 'btn btn-primary' %>
@@ -33,15 +33,17 @@
         <strong>วัน/เวลาสร้างเอกสาร : </strong><%= outbound.sent_date.strftime("%d/%m/%C") %> <%= outbound.created_at.strftime("%H.%M") %><br>
         <strong>ชื่อผู้สร้าง : </strong><%= outbound.name_check %> <br>
         <div class="row">
-          <div class="col-sm-5">
-            <%= link_to 'สแกนป้ายปากถุง' , new_outbound_bag_path(outbound.id) , class: 'btn btn-success btn-lg' %>
+          <div class="col-xs-6">
+            <%= link_to 'สแกนป้ายปากถุง' , new_outbound_bag_path(outbound.id) , class: 'btn btn-success' %>
           </div>
-          <div class="col-sm-7">
-            <%= link_to 'รายละเอียดเพิ่มเติม' , outbound_path(outbound.id) , class:'btn btn-primary btn-lg' %>
+          <div class="col-xs-6">
+            <%= link_to 'รายละเอียดเพิ่มเติม' , outbound_path(outbound.id) , class:'btn btn-primary' %>
           </div>
         </div>
     </div>
   </div>
   <% end %>
 </div>
-<div class="text-center"><%= will_paginate @outbounds , renderer: BootstrapPagination::Rails  %></div>
+<div class="col-xs-12">
+  <div class="text-center"><%= will_paginate @outbounds , renderer: BootstrapPagination::Rails  %></div>
+</div>
