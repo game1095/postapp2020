@@ -20,15 +20,19 @@ class BagsController < ApplicationController
     if @bag.persisted?
         @bag.destroy
         flash[:alert] = "ถุงถูกลบออกจากระบบแล้ว !!!!"
-        redirect_to new_outbound_bag_path 
+        redirect_to new_outbound_bag_path
     else
       if @bag.save
         flash[:success] = "ข้อมูลถูกเพิ่มเข้าสู่ระบบแล้ว"
         redirect_to new_outbound_bag_path
       else
-        render 'new' 
+        render 'new'
       end
     end
+  end
+
+  def show
+    @bag = Bag.find(params[:id])
   end
 
   def destroy
