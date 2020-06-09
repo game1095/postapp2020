@@ -21,7 +21,7 @@
   <tbody>
       <% @bags.each do |bag| %>
       <tr>
-        <td class="text-center"><%= link_to bag.number_check , outbound_path(bag.outbound.id) %></td>
+        <td class="text-center"><%= link_to bag.number_check , bag_path(bag.id) %></td>
         <td class="text-center"><%= bag.outbound.name %></td>
         <td class="text-center"><%= bag.created_at.strftime("%d/%m/%y")%></td>
       </tr>

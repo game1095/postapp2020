@@ -12,15 +12,19 @@ class Outbound < ApplicationRecord
 
   def name_check
   	if self.name != nil
-  		return self.name 
+  		return self.name
   	else
   		return "-"
   	end
   end
 
+  def count
+    self.bags.count
+  end
+
   def check
     # in area
-    nakhonsawan = ["60000"] 
+    nakhonsawan = ["60000"]
     uthai = ["61000" , "60130"]
     banlai = ["61110" , "61130" , "61140" , "61170" , "61180"]
     lansak = ["60001" , "60170" , "61120" , "61150" , "61160"]
@@ -47,7 +51,7 @@ class Outbound < ApplicationRecord
     ratchaburi = ["70","71","72","75","76","77"]
 
     # check condition
-    if nakhonsawan.include?(self.destination) == true 
+    if nakhonsawan.include?(self.destination) == true
       if self.bags[0] != nil
         if nakhonsawan.include?(self.bags[0].number[13..17]) == true
           return "black"
@@ -61,7 +65,7 @@ class Outbound < ApplicationRecord
       puts "black"
     end
 
-    if uthai.include?(self.destination) == true 
+    if uthai.include?(self.destination) == true
       if self.bags[0] != nil
         if uthai.include?(self.bags[0].number[13..17]) == true
           return "black"
@@ -75,7 +79,7 @@ class Outbound < ApplicationRecord
       puts "black"
     end
 
-    if banlai.include?(self.destination) == true 
+    if banlai.include?(self.destination) == true
       if self.bags[0] != nil
         if banlai.include?(self.bags[0].number[13..17]) == true
           return "black"
@@ -89,7 +93,7 @@ class Outbound < ApplicationRecord
       puts "black"
     end
 
-    if lansak.include?(self.destination) == true 
+    if lansak.include?(self.destination) == true
       if self.bags[0] != nil
         if lansak.include?(self.bags[0].number[13..17]) == true
           return "black"
@@ -103,7 +107,7 @@ class Outbound < ApplicationRecord
       puts "black"
     end
 
-    if paisaree.include?(self.destination) == true 
+    if paisaree.include?(self.destination) == true
       if self.bags[0] != nil
         if paisaree.include?(self.bags[0].number[13..17]) == true
           return "black"
@@ -117,7 +121,7 @@ class Outbound < ApplicationRecord
       puts "black"
     end
 
-    if kaoliao.include?(self.destination) == true 
+    if kaoliao.include?(self.destination) == true
       if self.bags[0] != nil
         if kaoliao.include?(self.bags[0].number[13..17]) == true
           return "black"
@@ -131,7 +135,7 @@ class Outbound < ApplicationRecord
       puts "black"
     end
 
-    if jansen.include?(self.destination) == true 
+    if jansen.include?(self.destination) == true
       if self.bags[0] != nil
         if jansen.include?(self.bags[0].number[13..17]) == true
           return "black"
@@ -145,7 +149,7 @@ class Outbound < ApplicationRecord
       puts "black"
     end
 
-    if jansen.include?(self.destination) == true 
+    if jansen.include?(self.destination) == true
       if self.bags[0] != nil
         if jansen.include?(self.bags[0].number[13..17]) == true
           return "black"
@@ -159,7 +163,7 @@ class Outbound < ApplicationRecord
       puts "black"
     end
 
-    if kronglan.include?(self.destination) == true 
+    if kronglan.include?(self.destination) == true
       if self.bags[0] != nil
         if kronglan.include?(self.bags[0].number[13..17]) == true
           return "black"
@@ -173,7 +177,7 @@ class Outbound < ApplicationRecord
       puts "black"
     end
 
-    if kampang_pdsc.include?(self.destination) == true 
+    if kampang_pdsc.include?(self.destination) == true
       if self.bags[0] != nil
         if kampang_pdsc.include?(self.bags[0].number[13..17]) == true
           return "black"
@@ -187,7 +191,7 @@ class Outbound < ApplicationRecord
       puts "black"
     end
 
-    if prankratai.include?(self.destination) == true 
+    if prankratai.include?(self.destination) == true
       if self.bags[0] != nil
         if prankratai.include?(self.bags[0].number[13..17]) == true
           return "black"
@@ -201,7 +205,7 @@ class Outbound < ApplicationRecord
       puts "black"
     end
 
-    if lankrabue.include?(self.destination) == true 
+    if lankrabue.include?(self.destination) == true
       if self.bags[0] != nil
         if lankrabue.include?(self.bags[0].number[13..17]) == true
           return "black"
@@ -215,7 +219,7 @@ class Outbound < ApplicationRecord
       puts "black"
     end
 
-    if tak_pdsc.include?(self.destination) == true 
+    if tak_pdsc.include?(self.destination) == true
       if self.bags[0] != nil
         if tak_pdsc.include?(self.bags[0].number[13..17]) == true
           return "black"
@@ -229,7 +233,7 @@ class Outbound < ApplicationRecord
       puts "black"
     end
 
-    if samngao.include?(self.destination) == true 
+    if samngao.include?(self.destination) == true
       if self.bags[0] != nil
         if samngao.include?(self.bags[0].number[13..17]) == true
           return "black"
@@ -243,7 +247,7 @@ class Outbound < ApplicationRecord
       puts "black"
     end
 
-    if maesot.include?(self.destination) == true 
+    if maesot.include?(self.destination) == true
       if self.bags[0] != nil
         if maesot.include?(self.bags[0].number[13..17]) == true
           return "black"
@@ -257,7 +261,7 @@ class Outbound < ApplicationRecord
       puts "black"
     end
 
-    if jiraprawat.include?(self.destination) == true 
+    if jiraprawat.include?(self.destination) == true
       if self.bags[0] != nil
         if jiraprawat.include?(self.bags[0].number[13..17]) == true
           return "black"
@@ -270,6 +274,6 @@ class Outbound < ApplicationRecord
     else
       puts "black"
     end
-          
+
   end
 end

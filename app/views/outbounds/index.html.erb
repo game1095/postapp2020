@@ -32,12 +32,29 @@
         <strong>ปลายทาง : </strong><%= outbound.destination %> <br>
         <strong>วัน/เวลาสร้างเอกสาร : </strong><%= outbound.sent_date.strftime("%d/%m/%C") %> <%= outbound.created_at.strftime("%H.%M") %><br>
         <strong>ชื่อผู้สร้าง : </strong><%= outbound.name_check %> <br>
+        <strong>จำนวนถุง : </strong><%= outbound.count %> ถุง
         <div class="row">
-          <div class="col-xs-6">
-            <%= link_to 'สแกนป้ายปากถุง' , new_outbound_bag_path(outbound.id) , class: 'btn btn-success' %>
-          </div>
-          <div class="col-xs-6">
-            <%= link_to 'รายละเอียดเพิ่มเติม' , outbound_path(outbound.id) , class:'btn btn-primary' %>
+          <div class="btn-group" role="group" aria-label="ทดสอบ">
+            <div class="col-xs-3">
+              <%= link_to 'สแกนถุง' , new_outbound_bag_path(outbound.id) , class: 'btn btn-success btn-sm' %>
+            </div>
+            <div class="col-xs-4">
+              <%= link_to 'รายละเอียด' , outbound_path(outbound.id) , class:'btn btn-info btn-sm' %>
+            </div>
+            <div class="col-xs-5">
+              <div class="btn-group" role="group">
+                <button type="button" class="btn btn-primary dropdown-toggle fa fa-print btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <strong>พิมพ์</strong>
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><%= link_to ' เรียงต้นทาง (3 แถว)' , prints_origin_path(outbound.id , 'pdf') , class: 'fa fa-print' , target:'_blank'%>&nbsp;&nbsp;</li>
+                  <li><%= link_to ' เรียงปลายทาง(3 แถว)' , prints_destination_path(outbound.id , 'pdf') , class: 'fa fa-print' , target:'_blank'%>&nbsp;&nbsp;</li>
+                  <li><%= link_to ' เรียงต้นทาง(1 แถว)' , paper_origin_path(outbound.id , 'pdf') , class:'fa fa-print' , target:'_blank ' %>&nbsp;&nbsp;</li>
+                  <li><%= link_to ' เรียงปลายทาง(1 แถว)' , paper_destination_path(outbound.id ,'pdf') , class: 'fa fa-print' , target:'_blank'%>&nbsp;&nbsp;</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
     </div>
