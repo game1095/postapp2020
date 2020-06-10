@@ -6,7 +6,7 @@ class Outbound < ApplicationRecord
   	if search.blank?
   		Outbound.all
   	else
-  		Outbound.where('outbound_number LIKE ?', "%#{search.downcase}%")
+  		Outbound.where('outbound_number LIKE ?', "%#{search}%")
   	end
   end
 

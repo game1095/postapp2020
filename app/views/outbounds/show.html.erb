@@ -1,4 +1,4 @@
-<h1 class="text-center">รายละเอียดบัญชีมอบหมายถุงไปรษณีย์ในประเทศ ป.58</h1>
+<h1 class="text-center">รายละเอียดบัญชี ป.58</h1>
 <div class="col-xs-12">
   <div class="row">
     <div class="col-xs-12">
@@ -31,7 +31,7 @@
               <strong>เลขที่ : </strong><%= @outbound.outbound_number %> <br>
               <strong>ต้นทาง : </strong><%= @outbound.origin %> <br>
               <strong>ปลายทาง: </strong><%= @outbound.destination %> <br>
-              <strong>จำนวนถุงทั้งสิ้น </strong> <%= @bags.count%> ถุง <br>
+              <strong>จำนวนถุงทั้งสิ้น </strong> <%= @outbound.count %> ถุง <br>
             </div>
             <div class="col-xs-6">
               <strong>วันที่เอกสาร : </strong><%= @outbound.sent_date.strftime("%d/%m/%y") %>  <br>
@@ -56,6 +56,7 @@
             <th class="text-center">บริการ</th>
             <th class="text-center">ต้นทาง</th>
             <th class="text-center">ปลายทาง</th>
+            <th class="text-center">ว/ด/ป เวลา ที่สแกน</th>
           </thead>
           <tbody>
             <% count = 0 %>
@@ -66,6 +67,7 @@
               <td class="text-center"><%= bag.service.upcase %></td>
               <td class="text-center"><%= bag.origin %></td>
               <td class="text-center"><%= bag.destination %></td>
+              <td class="text-center"><%= bag.created_at.strftime("%d/%m/%Y  %H:%M:%S") %></td>
             </tr>
             <% end %>
           </tbody>
@@ -73,4 +75,6 @@
       </div>
     </div>
   </div>
-</div>
+  <div class="col-xs-12">
+    <div class="text-center"><%= will_paginate @bags , renderer: BootstrapPagination::Rails  %></div>
+  </div>
