@@ -19,14 +19,18 @@
     </div>
   </div>
 </div>
-
+<% if flash[:complete] %>
+  <div class="alert alert-success" role="alert">
+    <h4 class="text-center"><%= flash[:complete] %></h4>
+  </div>
+<% end %>
 <%= form_for [@outbound , @bag] do |form| %>
   <div class="row">
     <div class="col-xs-6">
      <div class="form-group">
       <%= form.label :หมายเลขบัญชีป58 %>
-      <%= form.collection_select :outbound_id , Outbound.where(id: @outbound) , :id , :outbound_number ,{ selected: Outbound.where(id: @outbound) } , {class: 'form-control'} %>
-      </div>
+      <%= form.collection_select :outbound_id , Outbound.where(id: @outbound) , :id , :outbound_number ,{ selected: Outbound.where(id: @outbound) } , {class: 'form-control'}  %>
+    </div>
       <div class="form-group">
         <%= form.label :หมายเลขป้ายปากถุง , class: 'label-control' %>
         <%= form.text_field :number , class: ' form-control' ,  autofocus: true , autocomplete: "off" %>
@@ -57,7 +61,7 @@
   <div  class="row">
     <div class="col-xs-12">
       <div class="form-group">
-        <%= form.submit 'บันทึกผล' , class: 'btn btn-success btn-rounded btn-block' %>
+        <%= form.submit 'บันทึกหมายเลขถุง' , class: 'btn btn-success btn-rounded btn-block' %>
       </div>
     </div>
   </div>

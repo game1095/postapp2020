@@ -1,4 +1,5 @@
 class OutboundsController < ApplicationController
+  require 'will_paginate/array'
   def index
     @outbounds = Outbound.search(params[:search]).paginate(page: params[:page], per_page: 12).order(created_at: :desc)
   end
@@ -10,7 +11,8 @@ class OutboundsController < ApplicationController
   def create
     @outbound = Outbound.create(outbound_params)
     if @outbound.save
-      redirect_to outbounds_path
+      flash[:complete] = "ป.58 เลขที่ #{@outbound.outbound_number} ได้ถูกสร้างแล้ว ชื่อผู้สร้าง #{@outbound.name}"
+      redirect_to new_outbound_bag_path(@outbound.id)
     else
       render 'new'
     end
@@ -19,7 +21,7 @@ class OutboundsController < ApplicationController
   def show
     @outbound = Outbound.find(params[:id])
     # Sort bag number by destination  with model method
-    @bags = Bag.where(outbound_id: @outbound).sort_by(&:destination)
+    @bags = Bag.where(outbound_id: @outbound).sort_by(&:destination).paginate(page: params[:page], per_page: 20)
     respond_to do |format|
       format.html
       format.pdf do
