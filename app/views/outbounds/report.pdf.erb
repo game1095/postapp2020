@@ -27,28 +27,24 @@
     <table class="table table-bordered table-condensed">
       <thead>
         <!-- thead 1 -->
-        <th class="text-center">ลำดับ</th>
         <th class="text-center">หมายเลขป้ายปากถุง</th>
-
         <!-- thead 2 -->
-        <th class="text-center">ลำดับ</th>
         <th class="text-center">หมายเลขป้ายปากถุง</th>
-
         <!-- thead 3 -->
-        <th class="text-center">ลำดับ</th>
         <th class="text-center">หมายเลขป้ายปากถุง</th>
-
       </thead>
       <tbody>
         <% count = 0 %>
-        <% @bags.each_slice(3) do |bags| %>
-        <tr>
-          <% bags.each do |bag| %>
-            <td class="text-center"><%= count+=1 %></td>
-            <td class="text-center"><%= bag.number_check.upcase %></td>
-          <% end %>
-        </tr>
-      <% end %>
+        <% a = @bags.each_slice(100).to_a %>
+        <!-- Loop 1 -->
+        <% a[0].each do |n| %>
+          <tr>
+              <td class="text-center"><%= n.number_check.upcase  %></td>
+          </tr>
+        <% end %>
+
+        <!-- loop2 -->
+
       </tbody>
     </table>
 
