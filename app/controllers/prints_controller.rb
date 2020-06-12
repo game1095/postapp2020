@@ -9,7 +9,8 @@ class PrintsController < ApplicationController
       format.pdf do
         render template: 'outbounds/report',
         pdf: 'report',
-        page_size: 'A4'
+        page_size: 'A4',
+        viewport_size: '1280x1024'
       end
     end
   end
@@ -22,7 +23,8 @@ class PrintsController < ApplicationController
       format.pdf do
         render template: 'outbounds/report',
         pdf: 'report',
-        page_size: 'A4'
+        page_size: 'A4',
+        viewport_size: '1280x1024'
       end
     end
   end
@@ -36,7 +38,8 @@ class PrintsController < ApplicationController
       format.pdf do
         render template: 'outbounds/paper_report',
         pdf: 'report',
-        page_size: 'A4'
+        page_size: 'A4',
+        viewport_size: '1280x1024'
       end
     end
   end
@@ -49,9 +52,10 @@ class PrintsController < ApplicationController
       format.pdf do
         render template: 'outbounds/paper_report',
         pdf: 'report',
-        page_size: 'A4'
+        page_size: 'A4',
+        viewport_size: '1280x1024'
       end
     end
   end
-  
+
 end
