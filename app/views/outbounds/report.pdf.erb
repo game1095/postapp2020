@@ -9,35 +9,38 @@
     <!-- Header -->
     <h6 class="text-right">เอกสาร ศป.นครสวรรค์</h6>
     <h4 class="text-center">บัญชีมอบหมายถุงไปรษณีย์ในประเทศ (ป.58)</h4>
-    <h5 class="text-center">กรณีไม่มีข้อมูลในระบบ TND</h5>
+    <h5 class="text-center"><u>กรณีไม่มีข้อมูลในระบบ TND</u></h5>
 
-    <br>
     <!-- outbound details -->
-    <p class="text-center">
-      <strong>จาก : </strong><%= @outbound.origin %>
-      <strong>วันที่เอกสาร : </strong><%= @outbound.sent_date.strftime("%d/%m/%y") %>
-      <strong>เลขที่เอกสาร : </strong><%= @outbound.outbound_number %>
-    </p>
-    <p class="text-center">
-      <strong>ถึง : </strong><%= @outbound.destination %>
-      <strong>เลขที่สายรัด : </strong><%= @outbound.strap %>
-      <strong>ทะเบียนรถ : </strong><%= @outbound.car %>
-    </p>
-
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-lg-4">
+            <strong>จาก : </strong><%= @outbound.origin %><br>
+            <strong>ถึง : </strong><%= @outbound.destination %>
+          </div>
+          <div class="col-lg-4">
+            <strong>เลขที่เอกสาร : </strong><%= @outbound.outbound_number %> <br>
+            <strong>วันที่เอกสาร : </strong><%= @outbound.sent_date.strftime("%d/%m/%y") %>
+          </div>
+          <div class="col-lg-4">
+            <strong>ทะเบียนรถ : </strong><%= @outbound.car %><br>
+            <strong>เลขที่สายรัด : </strong><%= @outbound.strap %>
+          </div>
+        </div>
+      </div>
+    </div>
     <table class="table table-bordered table-condensed">
       <thead>
         <!-- thead 1 -->
         <th class="text-center">ลำดับ</th>
         <th class="text-center">หมายเลขป้ายปากถุง</th>
-
         <!-- thead 2 -->
         <th class="text-center">ลำดับ</th>
         <th class="text-center">หมายเลขป้ายปากถุง</th>
-
         <!-- thead 3 -->
         <th class="text-center">ลำดับ</th>
         <th class="text-center">หมายเลขป้ายปากถุง</th>
-
       </thead>
       <tbody>
         <% count = 0 %>
@@ -51,29 +54,27 @@
       <% end %>
       </tbody>
     </table>
-
     <!-- Summary -->
-    <div class="panel-body">
-      <p class="text-right"><strong>จำนวนถุงทั้งหมด : </strong><%= @bags.count %></p>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <p class="text-right"><strong>จำนวนถุงทั้งหมด : </strong><%= @bags.count %></p>
+      </div>
     </div>
-    <hr>
     <div class="row nobreak:before ">
-      <div class="col-lg-12">
-        <p>
-          ลงชื่อผู้ส่งมอบ....................................&nbsp;&nbsp;&nbsp;&nbsp;
-          ลงชื่อผู้ขนส่ง.....................................&nbsp;&nbsp;&nbsp;&nbsp;
-          ลงชื่อผู้รับมอบ....................................
-        </p>
-        <p>
-          &nbsp;(..............................................)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          (....................................................)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          (....................................................)
-        </p>
-        <p>
-          ลงวันที่.......................เวลา............&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          ลงวันที่.......................เวลา............&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          ลงวันที่.......................เวลา............
-        </p>
+      <div class="col-lg-4">
+        <strong>ลงชื่อผู้ส่งมอบ</strong>.................................<br>
+        (.....................................................)<br>
+        <strong>ลงวันที่</strong>.......................<strong>เวลา</strong>..............
+      </div>
+      <div class="col-lg-4">
+        <strong>ลงชื่อผู้ขนส่ง</strong>...................................<br>
+        (.....................................................)<br>
+        <strong>ลงวันที่</strong>.......................<strong>เวลา</strong>..............
+      </div>
+      <div class="col-lg-4">
+        <strong>ลงชื่อผู้รับมอบ</strong>.................................<br>
+        (.....................................................)<br>
+        <strong>ลงวันที่</strong>.......................<strong>เวลา</strong>..............
       </div>
     </div>
   </body>
