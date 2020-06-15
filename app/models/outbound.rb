@@ -22,6 +22,14 @@ class Outbound < ApplicationRecord
     self.bags.count
   end
 
+  def check_remark
+    if self.remark != nil
+      return self.remark
+    else
+      return "-"
+    end
+  end
+
   def check
     # in area
     nakhonsawan = ["60000"]
