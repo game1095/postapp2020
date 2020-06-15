@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_26_092320) do
+ActiveRecord::Schema.define(version: 2020_06_15_053527) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2020_05_26_092320) do
     t.datetime "updated_at", null: false
     t.string "outbound_number"
     t.string "name"
+    t.text "remark"
   end
 
   add_foreign_key "bags", "outbounds"
