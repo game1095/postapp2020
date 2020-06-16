@@ -20,6 +20,7 @@ gem 'rails_12factor', group: :production
 gem "font-awesome-rails"
 gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate-bootstrap'
+gem "rorvswild"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
