@@ -19,7 +19,7 @@ class BagsController < ApplicationController
     @bag = Bag.find_or_initialize_by(bag_params)
     if @bag.persisted?
         @bag.destroy
-        flash[:alert] = "ถุงถูกลบออกจากระบบแล้ว !!!!"
+        flash[:alert] = "***ถุงถูกลบออกจากระบบแล้ว***"
         redirect_to new_outbound_bag_path
     else
       if @bag.save
