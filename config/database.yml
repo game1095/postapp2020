@@ -17,16 +17,6 @@ development:
   username: postgres
   password: root
 
-test:
-  <<: *default
-  adapter: postgresql
-  encoding: utf8
-  database: db_postapp
-  pool: 5
-  host: localhost
-  username: postgres
-  password: root
-
 production:
   <<: *default
   sadapter: postgresql
