@@ -19,13 +19,11 @@ gem 'pg', '~> 0.18.4'
 gem 'bootstrap-sass', '~> 3.4.1'
 gem 'jquery-rails'
 gem 'rails_admin', '~> 2.0'
-gem 'wicked_pdf'
+gem 'wicked_pdf', '~> 1.4'
 gem 'wkhtmltopdf_binary'
-gem 'rails_12factor', group: :production
 gem "font-awesome-rails"
 gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate-bootstrap'
-gem "rorvswild"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

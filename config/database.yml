@@ -21,7 +21,7 @@ production:
   <<: *default
   sadapter: postgresql
   encoding: utf8
-  database: db_postapp
+  database: db_postappvp
   pool: 5
   host: localhost
   username: postgres

@@ -22,10 +22,29 @@
   </div>
   <% if flash[:complete] %>
     <div class="alert alert-success" role="alert">
-      <h4 class="text-center"><%= flash[:complete] %></h4>
+      <h5 class="text-center"><%= flash[:complete] %></h5>
+    </div>
+  <% end %>
+  <% if flash[:success] %>
+    <div class="alert alert-success" role="success">
+      <h5 class="text-center"><%= flash[:success] %></h5>
     </div>
   <% end %>
   <%= form_for [@outbound , @bag] do |form| %>
+
+    <% if @bag.errors.any? %>
+      <div id="error_explanation">
+        <h5><%= pluralize(@bag.errors.count, "ข้อผิดพลาด") %> ข้อมูลไม่ถูกบันทึกเนื่องจาก :</h5>
+
+        <ul>
+        <% @bag.errors.full_messages.each do |msg| %>
+            <span class="label label-danger">
+              <%= msg %>
+            </span>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
     <div class="row">
       <div class="col-xs-6">
        <div class="form-group">
@@ -34,7 +53,7 @@
       </div>
         <div class="form-group">
           <%= form.label :หมายเลขป้ายปากถุง , class: 'label-control' %>
-          <%= form.text_field :number , class: ' form-control' ,  autofocus: true , autocomplete: "off" %>
+          <%= form.text_field :number , class: ' form-control' ,  autofocus: true , autocomplete: "off" , value: rand(1234567112345123451) %>
         </div>
       </div>
       <div class="col-xs-6">
