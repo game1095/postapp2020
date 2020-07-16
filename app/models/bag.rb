@@ -1,6 +1,6 @@
 class Bag < ApplicationRecord
   belongs_to :outbound
-  validates :number , presence: true  
+  validates :number , presence: true , length: {in: 18..18}
 
   def self.search(search)
     if search.blank?
