@@ -1,0 +1,41 @@
+<h1 class="text-center">จัดการ ป.210</h1>
+<div class="row">
+  <div class="col-sm-4">
+    <div class="form-group">
+      <%= link_to 'กลับสู่หน้าหลัก' , home_path , class: 'btn btn-danger' %>
+      <%= link_to 'สร้าง ป.210' , new_internal_path , class: 'btn btn-primary' %>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+<div class="col-sm-12">
+  <% @internals.each do |internal| %>
+  <div class="col-sm-6">
+    <div class="well">
+      <strong>หมายเลขเอกสาร : </strong><%= internal.internal_number %> <br>
+        <strong>ต้นทาง : </strong><%= internal.origin %> <br>
+        <strong>ปลายทาง : </strong><%= internal.destination %> <br>
+        <strong>วัน/เวลาสร้างเอกสาร : </strong><%= internal.sent_date.strftime("%d/%m/%C") %> <%= internal.created_at.strftime("%H.%M") %><br>
+        <strong>ชื่อผู้สร้าง : </strong><%= internal.name %> <br>
+        <strong>จำนวนสิ่งของ : </strong><%= internal.internal_count %>
+        <div class="row">
+          <div class="btn-group" role="group" aria-label="ทดสอบ">
+            <div class="col-xs-4">
+              <%= link_to 'สแกนสิ่งของ' , new_internal_parcels_path(internal.id) , class: 'btn btn-success btn-sm' %>
+            </div>
+            <div class="col-xs-4">
+              <%= link_to 'รายละเอียด' , internal_path(internal.id)  , class:'btn btn-info btn-sm' %>
+            </div>
+            <div class="col-xs-4">
+              <%= link_to 'พิมพ์เอกสาร' , paper_internal_path(internal.id , 'pdf') , class: 'btn btn-primary btn-sm' , target:'_blank' %>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+<div class="col-xs-12">
+  <div class="text-center"><%= will_paginate @internals , renderer: BootstrapPagination::Rails  %></div>
+</div>

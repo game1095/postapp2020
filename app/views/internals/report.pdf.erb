@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <%= wicked_pdf_stylesheet_link_tag "report" %>
+    <title>เอกสาร ป.210</title>
+  </head>
+  <body>
+    <!-- Header -->
+    <h6 class="text-right">เอกสาร ศป.นครสวรรค์</h6>
+    <h4 class="text-center">บัญชีรับ - ส่งมอบ (ป.210)</h4>
+    <h5 class="text-center"><u>กรณีไม่มีข้อมูลในระบบ TND</u></h5>
+
+    <!-- outbound details -->
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-lg-6">
+            <strong>จากแผนก : </strong><%= @internal.origin %><br>
+            <strong>ถึงแผนก : </strong><%= @internal.destination %>
+          </div>
+          <div class="col-lg-6">
+            <strong>เลขที่เอกสาร : </strong><%= @internal.internal_number %> <br>
+            <strong>วันที่เอกสาร : </strong><%= @internal.sent_date.strftime("%d/%m/%y") %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <table class="table table-bordered table-condensed">
+      <thead>
+        <!-- thead 1 -->
+        <th class="text-center">ลำดับ</th>
+        <th class="text-center">หมายเลขส่งของ</th>
+        <!-- thead 2 -->
+        <th class="text-center">ลำดับ</th>
+        <th class="text-center">หมายเลขส่งของ</th>
+        <!-- thead 3 -->
+        <th class="text-center">ลำดับ</th>
+        <th class="text-center">หมายเลขส่งของ</th>
+      </thead>
+      <tbody>
+        <% count = 0 %>
+        <% @parcels.each_slice(3) do |bags| %>
+        <tr>
+          <% bags.each do |bag| %>
+            <td class="text-center"><%= count+=1 %></td>
+            <td class="text-center"><%= bag.parcel_number_check.upcase %></td>
+          <% end %>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <!-- Summary -->
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <p class="text-right"><strong>จำนวนสิ่งของทั้งหมด : </strong><%= @parcels.count %></p>
+      </div>
+    </div>
+    <div class="row nobreak:before ">
+      <div class="col-lg-6">
+        <strong>ลงชื่อผู้ส่งมอบ</strong>.............................................................<br>
+        (.................................................................................)<br>
+        <strong>ลงวันที่</strong>.......................<strong>เวลา</strong>............................
+      </div>
+      <div class="col-lg-6">
+        <strong>ลงชื่อผู้รับมอบ</strong>.............................................................<br>
+        (.................................................................................)<br>
+        <strong>ลงวันที่</strong>.......................<strong>เวลา</strong>............................
+      </div>
+    </div>
+  </body>
+</html>

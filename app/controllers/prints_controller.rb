@@ -58,4 +58,19 @@ class PrintsController < ApplicationController
     end
   end
 
+  # ปริ้นเอกสาร ป.210
+  def paper_internal
+    @internal = Internal.find(params[:id])
+    @parcels = Parcel.where(internal_id: @internal).sort_by(&:created_at)
+
+    respond_to do |format|
+      format.pdf do
+        render template: 'internals/report',
+        pdf: 'report',
+        page_size: 'A4',
+        viewport_size: '1280x1024'
+      end
+    end
+  end
+
 end

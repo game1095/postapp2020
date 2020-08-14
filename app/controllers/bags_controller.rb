@@ -15,7 +15,6 @@ class BagsController < ApplicationController
     @outbound = Outbound.find(params[:outbound_id])
     @bag_count = Bag.where(outbound_id: @outbound)
     @last_bag = Bag.where(outbound_id: @outbound).last(1).reverse
-    @outbound = Outbound.find(params[:outbound_id])
     @bag = Bag.find_or_initialize_by(bag_params)
     if @bag.persisted?
         @bag.destroy

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_15_053527) do
+ActiveRecord::Schema.define(version: 2020_08_06_042651) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,17 @@ ActiveRecord::Schema.define(version: 2020_06_15_053527) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "internals", force: :cascade do |t|
+    t.string "origin"
+    t.string "destination"
+    t.date "sent_date"
+    t.string "name"
+    t.text "remark"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "internal_number"
+  end
+
   create_table "outbounds", force: :cascade do |t|
     t.string "origin"
     t.string "destination"
@@ -44,5 +55,14 @@ ActiveRecord::Schema.define(version: 2020_06_15_053527) do
     t.text "remark"
   end
 
+  create_table "parcels", force: :cascade do |t|
+    t.string "number"
+    t.bigint "internal_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["internal_id"], name: "index_parcels_on_internal_id"
+  end
+
   add_foreign_key "bags", "outbounds"
+  add_foreign_key "parcels", "internals"
 end
