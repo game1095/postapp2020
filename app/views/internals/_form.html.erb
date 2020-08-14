@@ -1,31 +1,23 @@
-<%= form_for @outbound do |form| %>
+<%= form_for @internal do |form| %>
   <div class="row">
     <div class="col-xs-6">
       <div class="form-group">
         <%= form.label :เลขที่เอกสาร , class: 'label-control' %>
-        <%= form.text_field :outbound_number , class: ' form-control' , value: Time.now.strftime('%d%m%y')+rand(00000..99999).to_s , readonly: true %>
+        <%= form.text_field :internal_number , class: ' form-control' , value: Time.now.strftime('%d%m%y')+rand(00000..99999).to_s , readonly: true %>
       </div>
       <div class="form-group">
-        <%= form.label :ต้นทาง , class: 'label-control'%>
-        <%= form.text_field :origin , class:'form-control' , placeholder: 'กรุณาระบุต้นทาง' , required: true %>
-      </div>
-      <div class="form-group">
-        <%= form.label :ปลายทาง , class: 'label-control'%>
-        <%= form.text_field :destination , class: 'form-control', placeholder: 'กรุณาระบุปลายทาง' , required: true  %>
+        <%= form.label :แผนกต้นทาง , class: 'label-control'%>
+        <%= form.text_field :origin , class:'form-control' , placeholder: 'ระบุแผนกต้นทาง' , required: true %>
       </div>
     </div>
     <div class="col-xs-6">
       <div class="form-group">
-        <%= form.label :เลขที่สายรัด , class: 'label-control' %>
-        <%= form.text_field :strap , class:'form-control' , required: true , value: "-" %>
-      </div>
-      <div class="form-group">
-        <%= form.label :ทะเบียนรถ , class: 'label-control' %>
-        <%= form.text_field :car , class:'form-control' , required: true , value: '-' %>
-      </div>
-      <div class="form-group">
         <%= form.label :วันที่สร้างเอกสาร , class:'label-control' %>
         <%= form.date_field :sent_date , class: 'form-control' , value: Time.now.strftime('%Y-%m-%d') , required: true %>
+      </div>
+      <div class="form-group">
+        <%= form.label :แผนกปลายทาง , class: 'label-control'%>
+        <%= form.text_field :destination , class: 'form-control', placeholder: 'ระบุแผนกปลายทาง' , required: true  %>
       </div>
     </div>
     <div class="col-xs-12">
@@ -42,6 +34,6 @@
     </div>
   <div class="form-group">
     <%= form.submit 'บันทึกผล' , class: 'btn btn-success btn-rounded btn-block' %>
-    <%= link_to 'ย้อนกลับ' ,  outbounds_path , class: 'btn btn-warning btn-rounded btn-block' %>
+    <%= link_to 'ย้อนกลับ' ,  internals_path , class: 'btn btn-warning btn-rounded btn-block' %>
   </div>
 <% end %>

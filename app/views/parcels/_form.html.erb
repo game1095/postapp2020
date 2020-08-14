@@ -1,0 +1,87 @@
+<% cache(action_suffix: "primary") do %>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">รายละเอียด ป.210 เลขที่ <%= @internal.internal_number %></div>
+        <div class="panel-body">
+          <div class="col-xs-12">
+            <div class="col-xs-6">
+              <strong>เลขที่ : </strong><%= @internal.internal_number %> <br>
+              <strong>แผนกต้นทาง : </strong><%= @internal.origin %> <br>
+            </div>
+            <div class="col-xs-6">
+              <strong>วันที่เอกสาร : </strong><%= @internal.sent_date.strftime("%d/%m/%y") %>  <br>
+              <strong>แผนกปลายทาง: </strong><%= @internal.destination %> <br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% if flash[:complete] %>
+    <div class="alert alert-success" role="alert">
+      <h5 class="text-center"><%= flash[:complete] %></h5>
+    </div>
+  <% end %>
+  <% if flash[:success] %>
+    <div class="alert alert-success" role="success">
+      <h5 class="text-center"><%= flash[:success] %></h5>
+    </div>
+    <% elsif flash[:alert]%>
+    <div class="alert alert-danger" role="alert">
+      <p class="text-center"><strong><%= flash[:alert] %></strong></p>
+    </div>
+  <% end %>
+  <%= form_for [@internal , @parcel] do |form| %>
+    <% if @parcel.errors.any? %>
+      <div id="error_explanation">
+        <h5><%= pluralize(@parcel.errors.count, "ข้อผิดพลาด") %> ข้อมูลไม่ถูกบันทึกเนื่องจาก :</h5>
+
+        <ul>
+        <% @parcel.errors.full_messages.each do |msg| %>
+            <span class="label label-danger">
+              <%= msg %>
+            </span>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="row">
+      <div class="col-xs-6">
+       <div class="form-group">
+          <%= form.label :หมายเลขบัญชีป210 %>
+          <%= form.collection_select :internal_id , Internal.where(id: @internal) , :id , :internal_number ,{ selected: Internal.where(id: @internal) } , {class: 'form-control'}  %>
+      </div>
+        <div class="form-group">
+          <%= form.label :หมายเลขสิ่งของ , class: 'label-control' %>
+          <%= form.text_field :number , class: ' form-control' ,  autofocus: true , autocomplete: "off" %>
+        </div>
+      </div>
+      <div class="col-xs-6">
+        <div class="form-group">
+          <% if flash[:alert] %>
+            <%= audio_tag("alert.mp3", autoplay: true) %>
+          <% elsif flash[:success] %>
+            <%= audio_tag("accept.mp3", autoplay: true) %>
+          <% elsif @parcel.errors.any? %>
+            <%= audio_tag("alert.mp3", autoplay: true) %>
+          <% end %>
+        </div>
+        <div class="form-group">
+          <h5><strong>จำนวนสิ่งของที่สแกน : </strong><%= @parcel_count.count %> ชิ้น</h5>
+        </div>
+        <hr>
+        <div class="form-group">
+          <p><strong>สิ่งของสแกนล่าสุด : </strong><h5><%= @last_parcel[0].nil? ? "-" : @last_parcel[0].parcel_number_check %></h5></p>
+        </div>
+      </div>
+    </div>
+    <div  class="row">
+      <div class="col-xs-12">
+        <div class="form-group">
+          <%= form.submit 'บันทึกหมายเลขสิ่งของ' , class: 'btn btn-success btn-rounded btn-block' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
