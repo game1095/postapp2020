@@ -2,18 +2,22 @@
 <%= link_to 'กลับหน้าหลัก' , root_path , class: 'btn btn-danger' %>
 <%= link_to 'ค้นหาถุง' , bags_path , class: 'btn btn-warning' %>
 <hr>
-<div class="well">
-  <div class="row">
-    <div class="col-xs-6">
-      <p><strong>ป้ายปากถุง : </strong> <%= @bag.number_check %></p>
-      <p><strong>ชื่อคนสแกน : </strong> <%= @bag.outbound.name %></p>
-      <p><strong>วันเวลาที่สแกนถุง : </strong><%= @bag.created_at.strftime("%d/%m/%Y  %H:%M:%S") %></p>
-    </div>
-    <div class="col-xs-6">
-      <p><strong>บัญชีเอกสาร ป.58 : </strong> <%= link_to @bag.outbound.outbound_number , outbound_path(@bag.outbound) %></p>
-      <p><strong>วันเวลาที่สร้าง ป.58 : </strong> <%= @bag.outbound.created_at.strftime("%d/%m/%Y  %H:%M:%S") %></p>
-      <p><strong>ต้นทาง : </strong> <%= @bag.outbound.origin %></p>
-      <p><strong>ปลายทาง : </strong><%= @bag.outbound.destination %></p>
+<div class="card">
+  <div class="card-body">
+    <div class="card-text">
+      <div class="row">
+        <div class="col-xs-6">
+          <p><strong>ป้ายปากถุง : </strong> <%= @bag.number_check %></p>
+          <p><strong>ชื่อคนสแกน : </strong> <%= @bag.outbound.name %></p>
+          <p><strong>วันเวลาที่สแกนถุง : </strong><%= @bag.created_at.strftime("%d/%m/%Y  %H:%M:%S") %></p>
+        </div>
+        <div class="col-xs-6">
+          <p><strong>บัญชีเอกสาร ป.58 : </strong> <%= link_to @bag.outbound.outbound_number , outbound_path(@bag.outbound) %></p>
+          <p><strong>วันเวลาที่สร้าง ป.58 : </strong> <%= @bag.outbound.created_at.strftime("%d/%m/%Y  %H:%M:%S") %></p>
+          <p><strong>ต้นทาง : </strong> <%= @bag.outbound.origin %></p>
+          <p><strong>ปลายทาง : </strong><%= @bag.outbound.destination %></p>
+        </div>
+      </div>
     </div>
   </div>
 </div>

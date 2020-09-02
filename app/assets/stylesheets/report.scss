@@ -13,8 +13,7 @@
  *= require_tree .
  *= require_self
  */
- @import "bootstrap-sprockets";
- @import "bootstrap";
+ @import "material";
  thead { display: table-header-group }
  tr { page-break-inside: avoid }
 
@@ -24,4 +23,9 @@
 
  .td_height{
     height: 1px ;
+  }
+
+  .doubleline{
+    text-decoration: underline;
+    text-decoration-style: double;
   }

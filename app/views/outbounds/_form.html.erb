@@ -1,20 +1,22 @@
 <%= form_for @outbound do |form| %>
   <div class="row">
-    <div class="col-xs-6">
+    <div class="col-sm-12">
       <div class="form-group">
-        <%= form.label :เลขที่เอกสาร , class: 'label-control' %>
-        <%= form.text_field :outbound_number , class: ' form-control' , value: Time.now.strftime('%d%m%y')+rand(00000..99999).to_s , readonly: true %>
+          <%= form.label :เลขที่เอกสาร , class: 'label-control' %>
+          <%= form.text_field :outbound_number , class: ' form-control' , value: Time.now.strftime('%d%m%y')+rand(00000..99999).to_s , readonly: true %>
       </div>
       <div class="form-group">
-        <%= form.label :ต้นทาง , class: 'label-control'%>
-        <%= form.text_field :origin , class:'form-control' , placeholder: 'กรุณาระบุต้นทาง' , required: true %>
+          <%= form.label :ต้นทาง , class: 'label-control'%>
+          <%= form.text_field :origin , class:'form-control' , placeholder: 'กรุณาระบุต้นทาง' , required: true %>
       </div>
       <div class="form-group">
-        <%= form.label :ปลายทาง , class: 'label-control'%>
-        <%= form.text_field :destination , class: 'form-control', placeholder: 'กรุณาระบุปลายทาง' , required: true  %>
+          <%= form.label :ปลายทาง , class: 'label-control'%>
+          <%= form.text_field :destination , class: 'form-control', placeholder: 'กรุณาระบุปลายทาง' , required: true  %>
       </div>
-    </div>
-    <div class="col-xs-6">
+      <div class="form-group">
+        <%= form.label :ชื่อผู้สร้าง , class: 'label-control' %>
+        <%= form.text_field :name , class:'form-control' , required: true , placeholder: 'โปรดระบุชื่อ-สกุล เพื่อใช้ในการตรวจสอบ' %>
+      </div>
       <div class="form-group">
         <%= form.label :เลขที่สายรัด , class: 'label-control' %>
         <%= form.text_field :strap , class:'form-control' , required: true , value: "-" %>
@@ -27,21 +29,24 @@
         <%= form.label :วันที่สร้างเอกสาร , class:'label-control' %>
         <%= form.date_field :sent_date , class: 'form-control' , value: Time.now.strftime('%Y-%m-%d') , required: true %>
       </div>
-    </div>
-    <div class="col-xs-12">
       <div class="form-group">
         <%= form.label :หมายเหตุ , class: 'label-control' %>
-        <%= form.text_area :remark , class: 'form-control' , placeholder: 'ระบุหมายเหตุเพิ่มเติม' , cols: 5, rows: 5 %>
+        <%= form.text_area :remark , class: 'form-control' , placeholder: 'ระบุหมายเหตุเพิ่มเติม' , cols: 2, rows: 2 %>
       </div>
     </div>
-    <div class="col-xs-12">
+  </div>
+  <div class="row">
+    <div class="col-sm">
       <div class="form-group">
-        <%= form.label :ชื่อผู้สร้าง , class: 'label-control' %>
-        <%= form.text_field :name , class:'form-control' , required: true , placeholder: 'โปรดระบุชื่อ-สกุล เพื่อใช้ในการตรวจสอบ' %>
+        <div class="row">
+          <div class="col-sm-12">
+            <%= form.submit ' บันทึกผล' , class: 'btn btn-success btn-rounded btn-block' %>
+          </div>
+          <div class="col-sm-12">
+            <%= link_to ' ย้อนกลับ' ,  outbounds_path , class: 'btn btn-danger btn-rounded btn-block fa fa-backward' %>
+          </div>
+        </div>
       </div>
     </div>
-  <div class="form-group">
-    <%= form.submit 'บันทึกผล' , class: 'btn btn-success btn-rounded btn-block' %>
-    <%= link_to 'ย้อนกลับ' ,  outbounds_path , class: 'btn btn-warning btn-rounded btn-block' %>
   </div>
 <% end %>

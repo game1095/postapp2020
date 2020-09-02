@@ -12,42 +12,43 @@
     <h5 class="text-center"><u>กรณีไม่มีข้อมูลในระบบ TND</u></h5>
 
     <!-- outbound details -->
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <div class="row">
-          <div class="col-lg-4">
-            <strong>จาก : </strong><%= @outbound.origin %><br>
-            <strong>ถึง : </strong><%= @outbound.destination %>
-          </div>
-          <div class="col-lg-4">
-            <strong>เลขที่เอกสาร : </strong><%= @outbound.outbound_number %> <br>
-            <strong>วันที่เอกสาร : </strong><%= @outbound.sent_date.strftime("%d/%m/%y") %>
-          </div>
-          <div class="col-lg-4">
-            <strong>ทะเบียนรถ : </strong><%= @outbound.car %><br>
-            <strong>เลขที่สายรัด : </strong><%= @outbound.strap %>
-          </div>
-        </div>
+    <div class="card">
+      <div class="card-body">
+        <table class="table table-borderless table-sm">
+          <tbody>
+            <tr>
+              <td style="height:1px"><strong>จาก : </strong><%= @outbound.origin %></td>
+              <td style="height:1px"><strong>เลขที่เอกสาร : </strong><%= @outbound.outbound_number %></td>
+              <td style="height:1px"><strong>ทะเบียนรถ : </strong><%= @outbound.car %></td>
+            </tr>
+            <tr>
+              <td style="height:1px"><strong>ถึง : </strong><%= @outbound.destination %></td>
+              <td style="height:1px"><strong>วันที่เอกสาร : </strong><%= @outbound.sent_date.strftime("%d/%m/%y") %></td>
+              <td style="height:1px"><strong>เลขที่สายรัด : </strong><%= @outbound.strap %></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
-    <table class="table table-bordered table-condensed">
+    <br>
+    <table class="table table-bordered table-sm">
       <thead>
         <!-- thead 1 -->
-        <th class="text-center">ลำดับ</th>
-        <th class="text-center">หมายเลขป้ายปากถุง</th>
-        <th class="text-center">บริการ</th>
-        <th class="text-center">ต้นทาง</th>
-        <th class="text-center">ปลายทาง</th>
+        <th class="text-center" style="height:1px">ลำดับ</th>
+        <th class="text-center" style="height:1px">หมายเลขป้ายปากถุง</th>
+        <th class="text-center" style="height:1px">บริการ</th>
+        <th class="text-center" style="height:1px">ต้นทาง</th>
+        <th class="text-center" style="height:1px">ปลายทาง</th>
       </thead>
       <tbody>
         <% count = 0 %>
         <% @bags.each do |bag| %>
         <tr>
-          <td class="text-center"><%= count += 1 %></td>
-          <td class="text-center"><%= bag.number_check.upcase %></td>
-          <td class="text-center"><%= bag.service %></td>
-          <td class="text-center"><%= bag.origin %></td>
-          <td class="text-center"><%= bag.destination %></td>
+          <td class="text-center" style="height:1px"><%= count += 1 %></td>
+          <td class="text-center" style="height:1px"><%= bag.number_check.upcase %></td>
+          <td class="text-center" style="height:1px"><%= bag.service %></td>
+          <td class="text-center" style="height:1px"><%= bag.origin %></td>
+          <td class="text-center" style="height:1px"><%= bag.destination %></td>
         </tr>
         <% end %>
       </tbody>
@@ -55,25 +56,27 @@
     <!-- Summary -->
     <div class="panel panel-default">
       <div class="panel-body">
-        <p class="text-right"><strong>จำนวนถุงทั้งหมด : </strong><%= @bags.count %></p>
+        <p class="text-right doubleline"><strong>จำนวนถุงทั้งหมด : </strong><%= @bags.count %></p>
       </div>
     </div>
-    <div class="row nobreak:before ">
-      <div class="col-lg-4">
-        <strong>ลงชื่อผู้ส่งมอบ</strong>.................................<br>
-        (.....................................................)<br>
-        <strong>ลงวันที่</strong>.......................<strong>เวลา</strong>..............
-      </div>
-      <div class="col-lg-4">
-        <strong>ลงชื่อผู้ขนส่ง</strong>...................................<br>
-        (.....................................................)<br>
-        <strong>ลงวันที่</strong>.......................<strong>เวลา</strong>..............
-      </div>
-      <div class="col-lg-4">
-        <strong>ลงชื่อผู้รับมอบ</strong>.................................<br>
-        (.....................................................)<br>
-        <strong>ลงวันที่</strong>.......................<strong>เวลา</strong>..............
-      </div>
-    </div>
+
+    <!--  Sign Name -->
+    <table class="table table-borderless table-sm nobreak:before">
+      <tr>
+        <td style="height:1px"><strong>ลงชื่อผู้ส่งมอบ</strong>.................................</td>
+        <td style="height:1px"><strong>ลงชื่อผู้ขนส่ง</strong>...................................</td>
+        <td style="height:1px"><strong>ลงชื่อผู้รับมอบ</strong>.................................</td>
+      </tr>
+      <tr>
+        <td style="height:1px">(.....................................................)</td>
+        <td style="height:1px">(.....................................................)</td>
+        <td style="height:1px">(.....................................................)</td>
+      </tr>
+      <tr>
+        <td style="height:1px"><strong>ลงวันที่</strong>.......................<strong>เวลา</strong>..............</td>
+        <td style="height:1px"><strong>ลงวันที่</strong>.......................<strong>เวลา</strong>..............</td>
+        <td style="height:1px"><strong>ลงวันที่</strong>.......................<strong>เวลา</strong>..............</td>
+      </tr>
+    </table>
   </body>
 </html>
