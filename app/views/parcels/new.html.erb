@@ -1,5 +1,7 @@
 <h1 class="text-center">สแกนหมายสิ่งของ</h1>
-<%= link_to 'ย้อนกลับ' , internals_path , class: 'btn btn-danger' %>
-<%= link_to 'รายละเอียดเพิ่มเติม ป.210' , internal_path(@internal.id) , class: 'btn btn-primary' %>
+<div class="col-xs">
+  <%= link_to ' ย้อนกลับ' , internals_path , class: 'btn btn-danger fa fa-backward' %>
+  <%= link_to ' รายละเอียดเพิ่มเติม ป.210' , internal_path(@internal.id) , class: 'btn btn-info fa fa-info' %>
+</div>
 <hr>
 <%= render 'form' %>

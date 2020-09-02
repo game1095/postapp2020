@@ -1,82 +1,73 @@
 <h1 class="text-center">รายละเอียดบัญชี ป.58</h1>
   <div class="row">
-    <div class="col-xs-12">
-      <%= link_to 'ย้อนกลับ' , outbounds_path , class: 'btn btn-danger'%>
-      <%= link_to 'สแกนสิ่งป้ายปากถุง' , new_outbound_bag_path(@outbound.id) , class: 'btn btn-success' %>
+    <div class="col-sm-12">
       <div class="btn-group" role="group">
-        <button type="button" class="btn btn-primary dropdown-toggle fa fa-print" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <strong>พิมพ์เอกสาร</strong>
-          <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu">
-          <li><%= link_to ' เรียงต้นทาง (3 แถว)' , prints_origin_path(@outbound.id , 'pdf') , class: 'fa fa-print' , target:'_blank'%>&nbsp;&nbsp;</li>
-          <li><%= link_to ' เรียงปลายทาง(3 แถว)' , prints_destination_path(@outbound.id , 'pdf') , class: 'fa fa-print' , target:'_blank'%>&nbsp;&nbsp;</li>
-          <li><%= link_to ' เรียงต้นทาง(1 แถว)' , paper_origin_path(@outbound.id , 'pdf') , class:'fa fa-print' , target:'_blank ' %>&nbsp;&nbsp;</li>
-          <li><%= link_to ' เรียงปลายทาง(1 แถว)' , paper_destination_path(@outbound.id ,'pdf') , class: 'fa fa-print' , target:'_blank'%>&nbsp;&nbsp;</li>
-        </ul>
+        <%= link_to ' ย้อนกลับ' , outbounds_path , class: 'btn btn-danger fa fa-backward btn-sm'%>
+        <%= link_to ' สแกน' , new_outbound_bag_path(@outbound.id) , class: 'btn btn-success fa fa-barcode btn-sm' %>
+        <div class="dropdown show">
+          <a class="btn btn-dark btn-sm fa fa-print" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            พิมพ์
+          </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <%= link_to ' เรียงต้นทาง (3 แถว)' , prints_origin_path(@outbound.id , 'pdf') , class: 'fa fa-print dropdown-item' , target:'_blank'%>&nbsp;&nbsp;
+            <%= link_to ' เรียงปลายทาง(3 แถว)' , prints_destination_path(@outbound.id , 'pdf') , class: 'fa fa-print dropdown-item' , target:'_blank'%>&nbsp;&nbsp;
+            <%= link_to ' เรียงต้นทาง(1 แถว)' , paper_origin_path(@outbound.id , 'pdf') , class:'fa fa-print dropdown-item' , target:'_blank ' %>&nbsp;&nbsp;
+            <%= link_to ' เรียงปลายทาง(1 แถว)' , paper_destination_path(@outbound.id ,'pdf') , class: 'fa fa-print dropdown-item' , target:'_blank'%>&nbsp;&nbsp;
+          </div>
+        </div>
       </div>
     </div>
   </div>
   <hr>
   <div class="row">
-    <div class="col-xs-12">
-      <div class="panel panel-default">
-        <div class="panel-heading">รายละเอียด ป.58 เลขที่ <%= @outbound.outbound_number %></div>
-        <div class="panel-body">
-          <div class="col-xs-12">
-            <div class="col-xs-6">
-              <strong>เลขที่ : </strong><%= @outbound.outbound_number %> <br>
-              <strong>ต้นทาง : </strong><%= @outbound.origin %> <br>
-              <strong>ปลายทาง: </strong><%= @outbound.destination %> <br>
-              <strong>จำนวนถุงทั้งสิ้น </strong> <%= @outbound.count %> ถุง <br>
-            </div>
-            <div class="col-xs-6">
-              <strong>วันที่เอกสาร : </strong><%= @outbound.sent_date.strftime("%d/%m/%y") %>  <br>
-              <strong>เลขที่สายรัด : </strong><%= @outbound.strap %> <br>
-              <strong>ทะเบียนรถ : </strong><%= @outbound.car %> <br>
-              <strong>ชื่อผู้สร้าง : </strong><%= @outbound.name_check %>
+    <div class="col-sm">
+      <div class="card">
+        <div class="card-body">
+          <h6 class="card-title">รายละเอียด ป.58 เลขที่ <%= @outbound.outbound_number %></h6>
+          <div class="card-text">
+            <div class="row">
+              <div class="col-sm-4">
+                <strong>เลขที่ : </strong><%= @outbound.outbound_number %> <br>
+                <strong>ต้นทาง : </strong><%= @outbound.origin %> <br>
+                <strong>ปลายทาง: </strong><%= @outbound.destination %> <br>
+                <strong>จำนวนถุงทั้งสิ้น </strong> <%= @outbound.count %> ถุง <br>
+              </div>
+              <div class="col-sm-4">
+                <strong>วันที่เอกสาร : </strong><%= @outbound.sent_date.strftime("%d/%m/%y") %>  <br>
+                <strong>เลขที่สายรัด : </strong><%= @outbound.strap %> <br>
+                <strong>ทะเบียนรถ : </strong><%= @outbound.car %> <br>
+                <strong>ชื่อผู้สร้าง : </strong><%= @outbound.name_check %>
+              </div>
+              <div class="col-sm-4">
+                <strong>หมายเหตุ : </strong><%= @outbound.check_remark %>
+              </div>
             </div>
             <hr>
-            <div class="col-xs-12">
-              <strong>หมายเหตุ : </strong><%= @outbound.check_remark %>
+            <div class="row">
+              <div class="col-sm-12">
+                <table class="table table-bordered table-hover" id="outbounds">
+                  <thead>
+                    <th class="text-center">#</th>
+                    <th class="text-center">ป้ายปากถุง</th>
+                  </thead>
+                  <tbody>
+                    <% count = 0 %>
+                    <% @bags.each do |bag| %>
+                    <tr>
+                      <td class="text-center"><%= count += 1 %></td>
+                      <td class="text-center"><%= bag.number_check.upcase%></td>
+                    </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+              </div>
             </div>
-          </div>
-
+            <!-- pagination -->
+            <div class="col-xs-12">
+              <div class="text-center"><%= will_paginate @bags, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %></div>
+            </div>
         </div>
       </div>
     </div>
   </div>
-
-  <div class="panel panel-default">
-    <div class="panel-heading">รายละเอียดถุง</div>
-    <div class="panel-body">
-      <div class="table-responsive">
-        <table class="table table-hover table-bordered" id="outbounds">
-          <thead>
-            <th class="text-center">#</th>
-            <th class="text-center">เลขป้ายปากถุง</th>
-            <th class="text-center">บริการ</th>
-            <th class="text-center">ต้นทาง</th>
-            <th class="text-center">ปลายทาง</th>
-            <th class="text-center">ว/ด/ป เวลา ที่สแกน</th>
-          </thead>
-          <tbody>
-            <% count = 0 %>
-            <% @bags.each do |bag| %>
-            <tr>
-              <td class="text-center"><%= count += 1 %></td>
-              <td class="text-center"><%= bag.number_check.upcase%></td>
-              <td class="text-center"><%= bag.service.upcase %></td>
-              <td class="text-center"><%= bag.origin %></td>
-              <td class="text-center"><%= bag.destination %></td>
-              <td class="text-center"><%= bag.created_at.strftime("%d/%m/%Y  %H:%M:%S") %></td>
-            </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-  <div class="col-xs-12">
-    <div class="text-center"><%= will_paginate @bags , renderer: BootstrapPagination::Rails %></div>
   </div>

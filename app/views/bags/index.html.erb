@@ -30,4 +30,4 @@
 </table>
   </div>
 </div>
-<div class="text-center"><%= will_paginate @bags , renderer: BootstrapPagination::Rails  %></div>
+<div class="text-center"><%= will_paginate @bags, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %></div>

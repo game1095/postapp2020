@@ -1,89 +1,87 @@
 <% cache(action_suffix: "primary") do %>
   <div class="row">
-    <div class="col-xs-12">
-      <div class="panel panel-default">
-        <div class="panel-heading">รายละเอียด ป.58 เลขที่ <%= @outbound.outbound_number %></div>
-        <div class="panel-body">
-          <div class="col-xs-12">
-            <div class="col-xs-6">
-              <strong>เลขที่ : </strong><%= @outbound.outbound_number %> <br>
-              <strong>ต้นทาง : </strong><%= @outbound.origin %> <br>
-              <strong>ปลายทาง: </strong><%= @outbound.destination %> <br>
+    <div class="col-sm">
+      <div class="card">
+        <div class="card-body">
+          <div class="card-text">
+            <div class="row">
+              <div class="col-sm-6">
+                <strong>เลขที่ : </strong><%= @outbound.outbound_number %> <br>
+                <strong>ต้นทาง : </strong><%= @outbound.origin %> <br>
+                <strong>ปลายทาง: </strong><%= @outbound.destination %> <br>
+              </div>
+              <div class="col-sm-6">
+                <strong>วันที่เอกสาร : </strong><%= @outbound.sent_date.strftime("%d/%m/%y") %>  <br>
+                <strong>เลขที่สายรัด : </strong><%= @outbound.strap %> <br>
+                <strong>ทะเบียนรถ : </strong><%= @outbound.car %> <br>
+              </div>
             </div>
-            <div class="col-xs-6">
-              <strong>วันที่เอกสาร : </strong><%= @outbound.sent_date.strftime("%d/%m/%y") %>  <br>
-              <strong>เลขที่สายรัด : </strong><%= @outbound.strap %> <br>
-              <strong>ทะเบียนรถ : </strong><%= @outbound.car %> <br>
+            <hr>
+            <%= form_for [@outbound , @bag] do |form| %>
+              <% if @bag.errors.any? %>
+                <div id="error_explanation">
+                  <h5><h5><%= pluralize(@bag.errors.count, "ข้อผิดพลาด") %> ข้อมูลไม่ถูกบันทึกเนื่องจาก :</h5></h5>
+                  <ul>
+                    <% @bag.errors.full_messages.each do |msg| %>
+                      <span class="label label-danger">
+                        <%= msg %>
+                      </span>
+                    <% end %>
+                  </ul>
+                </div>
+              <% end %>
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <%= form.label :หมายเลขบัญชีป58 %>
+                    <%= form.collection_select :outbound_id , Outbound.where(id: @outbound) , :id , :outbound_number , { selected: Internal.where(id: @internal) } , {class: 'form-control'}  %>
+                  </div>
+                  <div class="form-group">
+                    <%= form.label :หมายเลขป้ายปากถุง  , class: 'label-control'%>
+                    <%= form.text_field :number , class: 'form-control' , autofocus: true , autocomplete: "off"  %>
+                  </div>
+                </div>
+
+                <% if flash[:alert] %>
+                  <%= audio_tag("alert.mp3", autoplay: true) %>
+                <% elsif flash[:success] %>
+                  <%= audio_tag("accept.mp3", autoplay: true) %>
+                <% elsif @bag.errors.any? %>
+                  <%= audio_tag("alert.mp3", autoplay: true) %>
+                <% end %>
+
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <% if flash[:complete] %>
+                      <div class="alert alert-success" role="alert">
+                        <h5 class="text-center"><%= flash[:complete] %></h5>
+                      </div>
+                    <% end %>
+                    <% if flash[:success] %>
+                      <div class="alert alert-success" role="alert">
+                        <h5 class="text-center"><%= flash[:success] %></h5>
+                      </div>
+                      <% elsif flash[:alert]%>
+                      <div class="alert alert-danger" role="alert">
+                        <p class="text-center"><strong><%= flash[:alert] %></strong></p>
+                      </div>
+                    <% end %>
+                  </div>
+                  <div class="form-group">
+                    <h5><strong>จำนวนสิ่งของที่สแกน : </strong><%= @bag_count.count %> ชิ้น</h5>
+                  </div>
+                  <div class="form-group">
+                    <p><strong>สิ่งของสแกนล่าสุด : </strong><h5><%= @last_bag[0].nil? ? "-" : @last_bag[0].number_check %></h5></p>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <%= form.submit 'บันทึกข้อมูล' , class: 'btn btn-success btn-rounded btn-block' %>
+              </div>
+            <% end %>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <% if flash[:complete] %>
-    <div class="alert alert-success" role="alert">
-      <h5 class="text-center"><%= flash[:complete] %></h5>
-    </div>
-  <% end %>
-  <% if flash[:success] %>
-    <div class="alert alert-success" role="success">
-      <h5 class="text-center"><%= flash[:success] %></h5>
-    </div>
-  <% end %>
-  <%= form_for [@outbound , @bag] do |form| %>
-
-    <% if @bag.errors.any? %>
-      <div id="error_explanation">
-        <h5><%= pluralize(@bag.errors.count, "ข้อผิดพลาด") %> ข้อมูลไม่ถูกบันทึกเนื่องจาก :</h5>
-
-        <ul>
-        <% @bag.errors.full_messages.each do |msg| %>
-            <span class="label label-danger">
-              <%= msg %>
-            </span>
-        <% end %>
-        </ul>
-      </div>
-    <% end %>
-    <div class="row">
-      <div class="col-xs-6">
-       <div class="form-group">
-        <%= form.label :หมายเลขบัญชีป58 %>
-        <%= form.collection_select :outbound_id , Outbound.where(id: @outbound) , :id , :outbound_number ,{ selected: Outbound.where(id: @outbound) } , {class: 'form-control'}  %>
-      </div>
-        <div class="form-group">
-          <%= form.label :หมายเลขป้ายปากถุง , class: 'label-control' %>
-          <%= form.text_field :number , class: ' form-control' ,  autofocus: true , autocomplete: "off" %>
-        </div>
-      </div>
-      <div class="col-xs-6">
-        <div class="form-group">
-          <% if flash[:alert] %>
-            <%= audio_tag("alert.mp3", autoplay: true) %>
-            <div class="alert alert-danger" role="alert">
-              <p class="text-center"><strong><%= flash[:alert] %></strong></p>
-            </div>
-          <% elsif flash[:success] %>
-            <%= audio_tag("accept.mp3", autoplay: true) %>
-          <% elsif @bag.errors.any? %>
-            <%= audio_tag("alert.mp3", autoplay: true) %>
-          <% end %>
-        </div>
-        <div class="form-group">
-          <h5><strong>จำนวนสิ่งของที่สแกน : </strong><%= @bag_count.count %> ชิ้น</h5>
-        </div>
-        <hr>
-        <div class="form-group">
-          <p><strong>ป้ายสแกนล่าสุด : </strong><h5><%= @last_bag[0].nil? ? "-" : @last_bag[0].number_check %></h5></p>
-        </div>
-      </div>
-    </div>
-    <div  class="row">
-      <div class="col-xs-12">
-        <div class="form-group">
-          <%= form.submit 'บันทึกหมายเลขถุง' , class: 'btn btn-success btn-rounded btn-block' %>
-        </div>
-      </div>
-    </div>
-  <% end %>
 <% end %>

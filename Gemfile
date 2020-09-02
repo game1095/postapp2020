@@ -16,7 +16,6 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'pg', '~> 0.18.4'
-gem 'bootstrap-sass', '~> 3.4.1'
 gem 'jquery-rails'
 gem 'rails_admin', '~> 2.0'
 gem 'wicked_pdf', '~> 1.4'
@@ -24,6 +23,9 @@ gem 'wkhtmltopdf_binary'
 gem "font-awesome-rails"
 gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate-bootstrap'
+gem 'will_paginate-bootstrap4'
+gem 'bootstrap',     '4.1.1'
+gem 'material-sass', '4.1.1'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
