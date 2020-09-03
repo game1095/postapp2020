@@ -1,0 +1,34 @@
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <br>
+    <div class="card">
+      <div class="card-body">
+        <div class="card-title text-center"><h2>เข้าสู่ระบบ Admin</h2></div>
+        <% if flash[:alert] %>
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          <p class="text-center"><strong><%= flash[:alert] %></strong></p>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <% end %>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="form-group">
+          <%= f.label :ชื่อผู้ใช้งาน , class: 'label-control' %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email" , class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :รหัสผ่าน , class: 'label-control' %><br />
+          <%= f.password_field :password, autocomplete: "current-password" , class: 'form-control' %>
+        </div>
+        <br>
+        <div class="actions">
+          <%= f.submit "เข้าสู่ระบบ" , class: 'btn btn-success btn-block' %>
+          <%= link_to ' กลับหน้าหลัก' , home_path , class: 'btn btn-danger btn-block fa fa-backward' %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
