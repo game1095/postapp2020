@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   mount RailsAdmin::Engine => '/game', as: 'rails_admin'
   root to: 'home#index'
   get 'home' , to: 'home#index'
@@ -13,7 +14,7 @@ Rails.application.routes.draw do
 
     # ปริ้น internals
     get '/internals/:id/print/internal' , to: 'prints#paper_internal' , as: 'paper_internal'
-    
+
   get 'bags/' , to: 'bags#index'
   resources :bags
   resources :feedbacks
