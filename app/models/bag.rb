@@ -6,7 +6,7 @@ class Bag < ApplicationRecord
     if search.blank?
       Bag.all
     else
-      Bag.where('number LIKE ?', "%#{search.downcase}%")
+      Bag.where('number LIKE ?', "%#{search.upcase}%")
     end
   end
 
@@ -37,5 +37,5 @@ class Bag < ApplicationRecord
     number[13..14]
   end
 
-  
+
 end
