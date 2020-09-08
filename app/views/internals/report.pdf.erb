@@ -3,7 +3,7 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <%= wicked_pdf_stylesheet_link_tag "report" %>
-    <title>เอกสาร ป.210</title>
+    <title>เอกสาร ป.58</title>
   </head>
   <body>
     <!-- Header -->
@@ -12,39 +12,42 @@
     <h5 class="text-center"><u>กรณีไม่มีข้อมูลในระบบ TND</u></h5>
 
     <!-- outbound details -->
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <div class="row">
-          <div class="col-lg-6">
-            <strong>จากแผนก : </strong><%= @internal.origin %><br>
-            <strong>ถึงแผนก : </strong><%= @internal.destination %>
-          </div>
-          <div class="col-lg-6">
-            <strong>เลขที่เอกสาร : </strong><%= @internal.internal_number %> <br>
-            <strong>วันที่เอกสาร : </strong><%= @internal.sent_date.strftime("%d/%m/%y") %>
-          </div>
-        </div>
+    <div class="card">
+      <div class="card-body">
+        <table class="table table-borderless table-sm">
+          <tbody>
+            <tr>
+              <td style="height:1px"><strong>จากแผนก : </strong><%= @internal.origin %></td>
+              <td style="height:1px"><strong>ถึงแผนก : </strong><%= @internal.destination %></td>
+            </tr>
+            <tr>
+              <td style="height:1px"><strong>เลขที่เอกสาร : </strong><%= @internal.internal_number %></td>
+              <td ><strong>วันที่เอกสาร : </strong><%= @internal.sent_date.strftime("%d/%m/%y") %></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
-    <table class="table table-bordered table-condensed">
+    <br>
+    <table class="table table-bordered table-sm">
       <thead>
         <!-- thead 1 -->
-        <th class="text-center">ลำดับ</th>
-        <th class="text-center">หมายเลขส่งของ</th>
+        <th class="text-center" style="height:1px">#</th>
+        <th class="text-center" style="height:1px">หมายเลขส่งของ</th>
         <!-- thead 2 -->
-        <th class="text-center">ลำดับ</th>
-        <th class="text-center">หมายเลขส่งของ</th>
+        <th class="text-center" style="height:1px">#</th>
+        <th class="text-center" style="height:1px">หมายเลขส่งของ</th>
         <!-- thead 3 -->
-        <th class="text-center">ลำดับ</th>
-        <th class="text-center">หมายเลขส่งของ</th>
+        <th class="text-center" style="height:1px">#</th>
+        <th class="text-center" style="height:1px">หมายเลขส่งของ</th>
       </thead>
       <tbody>
         <% count = 0 %>
         <% @parcels.each_slice(3) do |bags| %>
         <tr>
           <% bags.each do |bag| %>
-            <td class="text-center"><%= count+=1 %></td>
-            <td class="text-center"><%= bag.parcel_number_check.upcase %></td>
+            <td class="text-center" style="height:1px"><%= count+=1 %></td>
+            <td class="text-center" style="height:1px"><%= bag.parcel_number_check.upcase %></td>
           <% end %>
         </tr>
       <% end %>
@@ -53,20 +56,23 @@
     <!-- Summary -->
     <div class="panel panel-default">
       <div class="panel-body">
-        <p class="text-right"><strong>จำนวนสิ่งของทั้งหมด : </strong><%= @parcels.count %></p>
+        <p class="text-right doubleline"><strong>จำนวนถุงทั้งหมด : </strong><%= @parcels.count %></p>
       </div>
     </div>
-    <div class="row nobreak:before ">
-      <div class="col-lg-6">
-        <strong>ลงชื่อผู้ส่งมอบ</strong>.............................................................<br>
-        (.................................................................................)<br>
-        <strong>ลงวันที่</strong>.......................<strong>เวลา</strong>............................
-      </div>
-      <div class="col-lg-6">
-        <strong>ลงชื่อผู้รับมอบ</strong>.............................................................<br>
-        (.................................................................................)<br>
-        <strong>ลงวันที่</strong>.......................<strong>เวลา</strong>............................
-      </div>
-    </div>
+    <!-- Sign Name -->
+    <table class="table table-borderless table-sm nobreak:before">
+      <tr>
+        <td style="height:1px"><strong>ลงชื่อผู้ส่งมอบ</strong>...........................................</td>
+        <td style="height:1px"><strong>ลงชื่อผู้รับมอบ</strong>...........................................</td>
+      </tr>
+      <tr>
+        <td style="height:1px">(....................................................................)</td>
+        <td style="height:1px">(....................................................................)</td>
+      </tr>
+      <tr>
+        <td style="height:1px"><strong>ลงวันที่</strong>............................<strong>เวลา</strong>..................</td>
+        <td style="height:1px"><strong>ลงวันที่</strong>............................<strong>เวลา</strong>..................</td>
+      </tr>
+    </table>
   </body>
 </html>
