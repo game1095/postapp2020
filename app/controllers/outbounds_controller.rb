@@ -32,6 +32,14 @@ class OutboundsController < ApplicationController
     end
   end
 
+  def destroy
+    @outbound = Outbound.find(params[:id])
+    if @outbound.destroy
+      flash[:destroy] = "ป.58 เลขที่ #{@outbound.outbound_number} ได้ถูกลบแล้ว"
+      redirect_to outbounds_path
+    end
+  end
+
   private
     def outbound_params
       params.require(:outbound).permit(:origin , :destination , :sent_date , :strap , :car , :outbound_number , :name , :remark)

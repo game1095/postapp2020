@@ -11,6 +11,12 @@
 
   <body>
     <div class="container-fluid">
+      <% if user_signed_in? %>
+      <nav class="navbar navbar-light bg-light">
+        <strong class="badge badge-info"><span class="fa fa-user"></span>&nbsp; ผู้ใช้งาน : <%= current_user.email %></strong><strong><%= link_to 'ลงชื่อออก' , destroy_user_session_path , method: :delete , class: 'btn btn-danger btn-sm' %></strong>
+      </nav>
+      <% end%>
+      <br>
       <%= yield %>
     </div>
   </body>

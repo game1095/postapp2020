@@ -38,10 +38,13 @@
                   </thead>
                   <tbody>
                     <% count = 0 %>
-                    <% @parcels.each do |bag| %>
+                    <% @parcels.each do |parcel| %>
                     <tr>
-                      <td class="text-center"><%= bag.parcel_number_check.upcase%></td>
-                      <td class="text-center"><%= bag.created_at.strftime("%d/%m %H:%M:%S") %></td>
+                      <td class="text-center"><%= parcel.parcel_number_check.upcase%></td>
+                      <td class="text-center"><%= parcel.created_at.strftime("%d/%m %H:%M:%S") %></td>
+                      <% if user_signed_in? %>
+                        <td class="text-center"><%= link_to ' ลบ' , parcel_path(parcel.id) , method: :destroy , data:{confirm: "คุณแน่ใจที่จะลบถุงหมายเลข #{parcel.number}"}%></td>
+                      <% end %>
                     </tr>
                     <% end %>
                   </tbody>

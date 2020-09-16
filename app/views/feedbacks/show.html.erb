@@ -1,0 +1,10 @@
+<%= link_to ' ย้อนกลับ' , feedbacks_path , class: 'btn btn-danger btn-sm fa fa-backward'%>
+<br>
+<div class="card">
+  <div class="card-text">
+    <strong><p>หัวข้อ : </strong><%= @feedback.topic %></p>
+    <strong>รายละเอียด</strong><br>
+    <p><%= @feedback.comment %></p>
+    <br>
+  </div>
+</div>

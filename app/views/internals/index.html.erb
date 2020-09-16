@@ -21,7 +21,10 @@
           <strong>จำนวนสิ่งของ : </strong><%= internal.internal_count %><br>
           <div class="btn-group" role="group">
             <%= link_to ' สแกน' , new_internal_parcels_path(internal.id) , class: 'btn btn-success btn-sm fa fa-barcode' %>
-            <%= link_to ' รายละเอียด' , internal_path(internal.id)  , class:'btn btn-info btn-sm fa fa-info' %>
+            <%= link_to ' ข้อมูล' , internal_path(internal.id)  , class:'btn btn-info btn-sm fa fa-info' %>
+            <% if user_signed_in? %>
+              <%= link_to ' ลบ' , internal_path(internal.id), class: 'btn btn-danger btn-sm fa fa-trash' , method: :delete , data: {confirm: "คุณแน่ใจที่จะลบ ป.210 หมายเลข #{internal.internal_number} ***การลบจะทำถุงใน ป.210 หมายเลขดังกล่าวถูกลบทั้งหมด ***" }  %>
+            <% end %>
             <%= link_to ' พิมพ์' , paper_internal_path(internal.id , 'pdf') , class: 'btn btn-dark btn-sm fa fa-print' , target:'_blank' %>
           </div>
         </div>
