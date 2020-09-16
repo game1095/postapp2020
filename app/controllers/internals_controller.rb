@@ -18,9 +18,18 @@ class InternalsController < ApplicationController
   end
 
   def show
-    @internal =  Internal.find(params[:id])
+    @internal = Internal.find(params[:id])
     @parcels = Parcel.where(internal_id: @internal).sort_by(&:created_at).paginate(page: params[:page], per_page: 20)
   end
+
+  def destroy
+    @internal = Internal.find(params[:id])
+    if @internal.destroy
+      flash[:destroy] = "ป.210 เลขที่ #{@internal.internal_number} ได้ถูกลบแล้ว"
+      redirect_to internals_path
+    end
+  end
+
   private
     def internal_params
       params.require(:internal).permit(:origin , :destination , :sent_date  , :internal_number , :name , :remark , :internal_number)

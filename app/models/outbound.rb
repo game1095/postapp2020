@@ -1,5 +1,5 @@
 class Outbound < ApplicationRecord
-  has_many :bags
+  has_many :bags , dependent: :destroy
 
   def self.search(search)
   	if search.blank?

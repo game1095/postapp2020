@@ -49,6 +49,9 @@
                   <thead>
                     <th class="text-center">#</th>
                     <th class="text-center">ป้ายปากถุง</th>
+                    <% if user_signed_in? %>
+                      <th class="text-center"></th>
+                    <% end %>
                   </thead>
                   <tbody>
                     <% count = 0 %>
@@ -56,6 +59,9 @@
                     <tr>
                       <td class="text-center"><%= count += 1 %></td>
                       <td class="text-center"><%= bag.number_check.upcase%></td>
+                      <% if user_signed_in? %>
+                        <td class="text-center"><%= link_to ' ลบ' , bag_path(bag.id) , method: :destroy , data:{confirm: "คุณแน่ใจที่จะลบถุงหมายเลข #{bag.number_check}"}%></td>
+                      <% end %>
                     </tr>
                     <% end %>
                   </tbody>

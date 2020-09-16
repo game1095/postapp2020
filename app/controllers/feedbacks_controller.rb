@@ -1,5 +1,6 @@
 class FeedbacksController < ApplicationController
 	def index
+		@feedbacks = Feedback.all
 	end
 
 	def new
@@ -13,6 +14,10 @@ class FeedbacksController < ApplicationController
 		else
 			render 'new'
 		end
+	end
+
+	def show
+		@feedback = Feedback.find(params[:id])
 	end
 
 	private

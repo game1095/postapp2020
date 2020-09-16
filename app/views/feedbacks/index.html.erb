@@ -1,0 +1,23 @@
+<h1 class="text-center">ปัญหาการใช้งานทั้งหมด</h1>
+<%= link_to 'กลับหน้าหลัก' , home_path , class: 'btn btn-danger btn-sm fa fa-backward' %>
+<hr>
+<div class="card">
+  <div class="card-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>หัวข้อ</th>
+          <th>รายละเอียดของปัญหา</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @feedbacks.each do |feedback| %>
+        <tr>
+          <td><%= feedback.topic %></td>
+          <td><%= feedback.comment.first(18) %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

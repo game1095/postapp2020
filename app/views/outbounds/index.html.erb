@@ -11,17 +11,6 @@
 <hr>
 <div class="row">
   <div class="col-sm-12">
-    <div class="input-group mb-3">
-
-        <div class="input-group-append">
-
-        </div>
-
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-sm-12">
     <%= form_tag(outbounds_path , method: :get) do%>
     <div class="input-group mb-3">
       <%= text_field_tag(:search , params[:search] , class: 'form-control' , placeholder:'ค้นหาโดยหมายเลขเอกสาร' , size: 100) %>
@@ -31,13 +20,6 @@
       </div>
     </div>
     <% end %>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-sm-12">
-    <div class="form-group">
-    </div>
   </div>
 </div>
 <hr>
@@ -53,7 +35,10 @@
         <strong>จำนวนถุง : </strong><%= outbound.count %> ถุง <br>
         <div class="btn-group" role="group">
           <%= link_to ' สแกน' , new_outbound_bag_path(outbound.id) , class: 'btn btn-success btn-sm fa fa-barcode' %>
-          <%= link_to ' รายละเอียด' , outbound_path(outbound.id) , class:'btn btn-info btn-sm fa fa-info' %>
+          <%= link_to ' ข้อมูล' , outbound_path(outbound.id) , class:'btn btn-info btn-sm fa fa-info' %>
+          <% if user_signed_in? %>
+            <%= link_to ' ลบ' , outbound_path(outbound.id), class: 'btn btn-danger btn-sm fa fa-trash' , method: :delete , data: {confirm: "คุณแน่ใจที่จะลบ ป.58 หมายเลข #{outbound.outbound_number} ***การลบจะทำถุงใน ป.58 หมายเลขดังกล่าวถูกลบทั้งหมด ***" }  %>
+          <% end %>
           <div class="dropdown show">
             <a class="btn btn-dark btn-sm fa fa-print" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               พิมพ์
